@@ -41,10 +41,10 @@ const NavBar = () => {
     <nav>
       <div className={styles.nav__wrapper}>
         <div className={styles.nav__left}>
-          <h1>Financial Friendship</h1>
+          
         </div>
         <div className={styles.nav__center}>
-          
+        <h1>Financial Friendship</h1>
         </div>
         <div className={styles.nav__right}>
           {setLinks}

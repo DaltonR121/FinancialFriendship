@@ -14,27 +14,34 @@
 }
 
 .nav__left h1 {
+  font-size:35px;
   margin: 20px;
 }
 
-/* .nav__center {
+.nav__center {
+  grid-area: center;
+  display: flex;
+  justify-content: center;
+  font-family: 'Amatic SC', cursive;
+  font-size: 37px;
 
-} */
+}
 
 .nav__right {
   display: flex;
+  font-family: 'Amatic SC', cursive;
   align-items: center;
   justify-content: flex-end;
 }
 
 .nav__right li, a {
   display: inline;
-  font-size: 20px;
+  font-size: 25px;
   padding: 10px 20px;
-  margin: 10px;
-  border-radius: 10px;
+  margin: 10px 5px;
+  border-radius: 2px;
 }
 
 .nav__right li:hover {
-  background-color: rgb(202, 71, 31);
+  background-color: rgb(231, 76, 28);
 }

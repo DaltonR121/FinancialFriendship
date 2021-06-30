@@ -1,0 +1,42 @@
+.splash__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.splash__main_content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 750px;
+  width: 100vw;
+}
+
+.main_content__left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.syling__box {
+  display: flex;
+  height: 500px;
+  width: 500px;
+  border: 2px solid rgb(255, 87, 34);
+  transform: rotate(45deg);
+}
+
+.quote__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 10px;
+  border: 2px solid rgb(255, 87, 34);
+  transform: rotate(-45deg);
+}
+
+.splash__secondary_content {
+  display: flex;
+  height: 750px;
+  width: 100vw;
+  background-color: rgb(48, 56, 65);
+}

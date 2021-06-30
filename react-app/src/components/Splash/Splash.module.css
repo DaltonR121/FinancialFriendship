@@ -35,8 +35,19 @@
 }
 
 .splash__secondary_content {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   height: 750px;
   width: 100vw;
   background-color: rgb(48, 56, 65);
+}
+
+.secondary_content__right {
+  display: flex;
+  justify-content: center;
+  color: rgb(238, 238, 238);
+}
+
+.secondary_content__right h1 {
+  margin: 20px;
 }

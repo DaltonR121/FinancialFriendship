@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
+import github from '../../assets/GitHub-Mark-32px.png'
 import styles from './NavBar.module.css'
 
 const NavBar = () => {
@@ -41,7 +42,9 @@ const NavBar = () => {
     <nav>
       <div className={styles.nav__wrapper}>
         <div className={styles.nav__left}>
-          
+          <div className={styles.nav__github} onClick={() => (window.location.href='https://github.com/DaltonR121/FinancialFriendship')}>
+            <img src={github} />
+          </div>
         </div>
         <div className={styles.nav__center}>
         <h1>Financial Friendship</h1>

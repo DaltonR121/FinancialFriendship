@@ -1,6 +1,7 @@
 .nav__wrapper {
   display: grid;
   height: 75px;
+  width: 100vw;
   background-color: rgb(255, 87, 34);
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: 'left center right';
@@ -10,12 +11,16 @@
 .nav__left {
   grid-area: left;
   display: flex;
-  align-items: center;
+  margin: 20px 50px;
 }
 
 .nav__left h1 {
   font-size:35px;
   margin: 20px;
+}
+
+.nav__github {
+  cursor: pointer;
 }
 
 .nav__center {
@@ -24,7 +29,6 @@
   justify-content: center;
   font-family: 'Amatic SC', cursive;
   font-size: 37px;
-
 }
 
 .nav__right {
@@ -37,8 +41,8 @@
 .nav__right li, a {
   display: inline;
   font-size: 25px;
-  padding: 10px 20px;
-  margin: 10px 5px;
+  padding: 10px 30px;
+  margin: 10px 10px;
   border-radius: 2px;
 }
 

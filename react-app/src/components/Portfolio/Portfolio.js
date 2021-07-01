@@ -1,5 +1,4 @@
 import React from 'react';
-import PortfolioNav from '../../PortfolioNav/PortfolioNav';
 import styles from './Portfolio.module.css'
 
 const Portfolio = () => {

@@ -49,3 +49,22 @@
 .nav__right li:hover {
   background-color: rgb(231, 76, 28);
 }
+
+.sidebar__tab_wrapper {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(48, 56, 65);
+  color: rgb(238, 238, 238);
+}
+
+.sidebar__tab_wrapper li {
+  padding: 9px;
+}
+
+.sidebar__tab_wrapper a.active {
+  background-color: rgb(255, 87, 34);
+}
+
+/* .sidebar__tab_wrapper li:hover {
+  background-color: rgb(255, 87, 34);
+} */

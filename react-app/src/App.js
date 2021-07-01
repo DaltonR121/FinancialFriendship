@@ -6,7 +6,6 @@ import SignUpForm from "./components/auth/SignUpForm";
 import Splash from "./components/Splash/Splash"
 import NavBar from "./components/NavBar/NavBar";
 import Portfolio from "./components/Portfolio/Portfolio";
-import PortfolioNav from "./PortfolioNav/PortfolioNav";
 import Accounts from "./components/Accounts/Accounts"
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
@@ -33,7 +32,6 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      {sessionUser ? (<PortfolioNav />) : null}
       <Switch>
         <Route path="/" exact={true} >
           <Splash />

@@ -1,20 +1,33 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import LogoutButton from '../auth/LogoutButton';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from "../../store/session";
 import github from '../../assets/GitHub-Mark-32px.png'
 import styles from './NavBar.module.css'
 
 const NavBar = () => {
+  const dispatch = useDispatch();
+  
   const sessionUser = useSelector((state) => state.session.user);
   let setLinks;
+
+  const onLogout = async (e) => {
+    await dispatch(logout());
+  };
 
   if (sessionUser) {
     setLinks = (
       <nav>
         <ul>
           <li>
-            <LogoutButton />
+            <NavLink to="/profile" exact={true} activeClassName={styles.active}>
+              Profile
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/" onClick={onLogout} exact={true} activeClassName="active">
+                Logout
+            </NavLink>
           </li>
         </ul>
       </nav>
@@ -55,43 +68,45 @@ const NavBar = () => {
           </div>
         </div>
       </nav>
-      <div className={styles.sidebar__tab_wrapper}>
-        <li>
-          <NavLink to="/portfolio" exact={true} activeClassName={styles.active}>
-            Portfolio
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/accounts" exact={true} activeClassName={styles.active}>
-            Accounts
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/assets" exact={true} activeClassName={styles.active}>
-            Assets
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/credit_cards" exact={true} activeClassName={styles.active}>
-            Credit Cards
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/reoccuring" exact={true} activeClassName={styles.active}>
-            Monthly Reoccuring
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/other" exact={true} activeClassName={styles.active}>
-            Other Obligations
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/goals" exact={true} activeClassName={styles.active}>
-            Goals
-          </NavLink>
-        </li>
-      </div>
+      {sessionUser ? (
+        <div className={styles.tab_nav__tab_wrapper}>
+          <li>
+            <NavLink to="/portfolio" exact={true} activeClassName={styles.active}>
+              Portfolio
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/accounts" exact={true} activeClassName={styles.active}>
+              Accounts
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/assets" exact={true} activeClassName={styles.active}>
+              Assets
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/credit_cards" exact={true} activeClassName={styles.active}>
+              Credit Cards
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/reoccuring" exact={true} activeClassName={styles.active}>
+              Monthly Reoccuring
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/other" exact={true} activeClassName={styles.active}>
+              Other Obligations
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/goals" exact={true} activeClassName={styles.active}>
+              Goals
+            </NavLink>
+          </li>
+        </div>
+      ) : null}
     </>
   );
 }

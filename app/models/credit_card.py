@@ -6,9 +6,9 @@ class CreditCards(db.Model):
   id = db.Column(db.Integer, primary_key = True)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
   account_name = db.Column(db.String(50), nullable = False)
-  current_balance = db.Column(db.Numeric, nullable = False)
-  interest_rate = db.Column(db.Numeric)
-  limit = db.Column(db.Numeric)
+  current_balance = db.Column(db.Numeric(asdecimal=False), nullable = False)
+  interest_rate = db.Column(db.Numeric(asdecimal=False))
+  limit = db.Column(db.Numeric(asdecimal=False))
   due_date = db.Column(db.Integer)
 
   def to_dict(self):

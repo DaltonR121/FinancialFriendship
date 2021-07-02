@@ -7,7 +7,7 @@ class Account(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
   account_name = db.Column(db.String(40), nullable = False, unique = True)
   account_type = db.Column(db.String(20), nullable = False)
-  balance = db.Column(db.Numeric)
+  balance = db.Column(db.Numeric(asdecimal=False))
 
   def to_dict(self):
     return {

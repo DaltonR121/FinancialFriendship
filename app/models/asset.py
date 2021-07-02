@@ -6,9 +6,9 @@ class Asset(db.Model):
   id = db.Column(db.Integer, primary_key = True)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
   asset_description = db.Column(db.String(50), nullable = False)
-  current_value = db.Column(db.Numeric, nullable = False)
-  amount_owed = db.Column(db.Numeric)
-  interest_rate = db.Column(db.Numeric)
+  current_value = db.Column(db.Numeric(asdecimal=False), nullable = False)
+  amount_owed = db.Column(db.Numeric(asdecimal=False))
+  interest_rate = db.Column(db.Numeric(asdecimal=False))
   due_date = db.Column(db.Integer)
 
   def to_dict(self):

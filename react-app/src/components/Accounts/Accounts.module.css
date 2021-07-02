@@ -1,4 +1,66 @@
 .accounts__wrapper {
   display: flex;
-  width: 20%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accounts__wrapper h1 {
+  margin: 20px;
+}
+
+.add_account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px 15px;
+  background-color: rgb(254, 255, 197);
+}
+
+.add_account:hover {
+  background-color: rgb(253, 255, 133);
+}
+
+.accounts_table_wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  width: 100%;
+  align-items: center;
+}
+
+.accounts_table_wrapper table {
+  width: 90vw;
+  border-collapse: collapse;
+}
+
+.accounts_table_wrapper th {
+  width: 33%;
+  font-size: 20px;
+  background-color: rgb(48, 56, 65);
+  color: white;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.accounts_table_wrapper td {
+  width: 33%;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid black;
+  padding: 20px 0;
+}
+
+.accounts_table_wrapper tr:nth-child(even) {
+  background-color: lightgray;
+}
+
+.accounts_table_wrapper tr:hover {
+  background-color: darkgray;
+}
+
+.table_footer {
+  display: flex;
+  justify-content: center;
 }

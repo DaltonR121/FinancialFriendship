@@ -2,6 +2,7 @@
 const CREATE_ACCOUNT = 'accounts/CREATE_ACCOUNT'
 const GET_ACCOUNT = 'accounts/GET_ACCOUNT'
 const EDIT_ACCOUNT = 'accounts/EDIT_ACCOUNT'
+const DELETE_ACCOUNT = "accounts/DELETE_ACCOUNT";
 
 //action creators
 const createAccount = (payload) => ({
@@ -16,6 +17,11 @@ const getAccount = (account) => ({
 
 const editAccount = (account) => ({
   type: EDIT_ACCOUNT,
+  payload: account
+})
+
+const deleteAccount = (account) => ({
+  type: DELETE_ACCOUNT,
   payload: account
 })
 
@@ -35,24 +41,35 @@ export const createUserAccount = (account) => async (dispatch) => {
 export const getUserAccount = (userId) => async (dispatch) => {
   const account = await fetch(`/api/accounts/${userId}`);
   const data = await account.json()
-  console.log(data);
 
   dispatch(getAccount(data))
 }
 
-export const editUserAccount = (accountId) => async (dispatch) => {
-  const body = 'PLACEHOLDER' // START HERE WHEN I COME BACK
-  const account = await fetch(`/api/accounts/${accountId}`, {
+export const editUserAccount = (account) => async (dispatch) => {
+  console.log(account)
+  const accountUpdate = await fetch(`/api/accounts/edit`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: body,
+    body: JSON.stringify(account)
   });
-  const data = await account.json()
-  console.log(data);
+  const data = await accountUpdate.json();
 
   dispatch(editAccount(data))
+}
+
+export const deleteUserAccount = (accountId) => async(dispatch) => {
+  const account = await fetch(`/api/accounts/delete/${accountId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: accountId
+  })
+  const data = await account.json()
+
+  dispatch(deleteAccount(data))
 }
 
 let initialState = {};
@@ -74,9 +91,12 @@ export default function reducer(state = initialState, action) {
     }
     case EDIT_ACCOUNT: {
       const newState = { ...state };
-      action.payload.accounts.forEach((account) => {
-        newState[account.id] = account
-      })
+      newState[action.payload.account.id] = action.payload.account
+      return newState;
+    }
+    case DELETE_ACCOUNT: {
+      const newState = { ...state };
+      delete newState[action.payload.id];
       return newState;
     }
     default:

@@ -1,23 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editUserAccount } from '../../store/accounts';
-import { Redirect } from "react-router-dom";
 
-const EditAccountForm = () => {
+const EditAccountForm = ({ accountEditForm, setAccountEditForm, account }) => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.session.user)
   const [errors, setErrors] = useState([]);
-  const [accountName, setAccountName] = useState("");
-  const [accountType, setAccountType] = useState("");
-  const [balance, setBalance] = useState("");
+  const [accountName, setAccountName] = useState(account.account_name);
+  const [accountType, setAccountType] = useState(account.account_type);
+  const [balance, setBalance] = useState(account.balance);
 
-  const updateAccount = (accountId) => {
-    dispatch(editUserAccount(accountId))
+  const userId = useSelector((state) => state.session.user.id);
+
+  const submitEvent = (e) => {
+    e.preventDefault()
+    let accountUpdate = {
+      // table id not being passed...? Start here
+      id: account.id,
+      user_id: userId,
+      account_name: accountName,
+      account_type: accountType,
+      balance
+    }
+    dispatch(editUserAccount(accountUpdate))
+    setAccountEditForm(false)
   }
 
-
   return (
-    <form onSubmit={updateAccount}>
+    <form onSubmit={submitEvent}>
       <div>
         {errors.map((error) => (
           <div>{error}</div>
@@ -29,25 +38,24 @@ const EditAccountForm = () => {
           name="accountName"
           type="text"
           value={accountName}
-          onChange={setAccountName}
+          onChange={(e) => setAccountName(e.target.value)}
         />
       </div>
       <div>
         <label htmlFor="accountType">Account Type:</label>
-        <input
-          name="accountType"
-          type="text"
-          value={accountType}
-          onChange={setAccountType}
-        />
+          <select value={accountType} onChange={(e) => setAccountType(e.target.value)} name="accountType">
+            <option value="Checking">Checking</option>
+            <option value="Savings">Savings</option>
+            <option value="Retirement">Retirement</option>
+          </select>
       </div>
       <div>
         <label htmlFor="balance">Balance:</label>
         <input
           name="balance"
-          type="text"
+          type="number"
           value={balance}
-          onChange={setBalance}
+          onChange={(e) => setBalance(e.target.value)}
         />
       </div>
       <div>

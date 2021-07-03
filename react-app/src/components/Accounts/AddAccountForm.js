@@ -6,7 +6,7 @@ const AddAccountForm = ({ accountAddForm, setAccountAddForm }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [accountName, setAccountName] = useState("");
-  const [accountType, setAccountType] = useState("");
+  const [accountType, setAccountType] = useState("Checking");
   const [balance, setBalance] = useState("");
 
   const userId = useSelector((state) => state.session.user.id);
@@ -41,18 +41,17 @@ const AddAccountForm = ({ accountAddForm, setAccountAddForm }) => {
       </div>
       <div>
         <label htmlFor="accountType">Account Type:</label>
-        <input
-          name="accountType"
-          type="text"
-          value={accountType}
-          onChange={(e) => setAccountType(e.target.value)}
-        />
+          <select onChange={(e) => setAccountType(e.target.value)} name="accountType">
+            <option value="Checking">Checking</option>
+            <option value="Savings">Savings</option>
+            <option value="Retirement">Retirement</option>
+          </select>
       </div>
       <div>
         <label htmlFor="balance">Balance:</label>
         <input
           name="balance"
-          type="text"
+          type="number"
           value={balance}
           onChange={(e) => setBalance(e.target.value)}
         />

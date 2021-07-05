@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import session from "./session"
 import accounts from "./accounts"
 import assets from "./assets"
+import creditCards from "./creditCards"
 
 const rootReducer = combineReducers({
     session,
     accounts,
-    assets
+    assets,
+    creditCards
 });
 
 

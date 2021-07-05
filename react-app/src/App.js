@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Portfolio from "./components/Portfolio/Portfolio";
 import Accounts from "./components/Accounts/Accounts"
 import Assets from "./components/Assets/Assets"
+import CreditCards from "./components/CreditCards/CreditCards"
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
@@ -57,6 +58,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/assets" exact={true} >
           <Assets />
+        </ProtectedRoute>
+        <ProtectedRoute path="/credit_cards" exact={true} >
+          <CreditCards />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

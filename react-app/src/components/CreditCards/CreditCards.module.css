@@ -1,0 +1,72 @@
+.creditCards__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.creditCards__wrapper h1 {
+  margin: 20px;
+}
+
+.add_creditCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px 15px;
+  background-color: rgb(254, 255, 197);
+}
+
+.add_creditCard:hover {
+  background-color: rgb(253, 255, 133);
+}
+
+.creditCards_table_wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  width: 100%;
+  align-items: center;
+}
+
+.creditCards_table_wrapper table {
+  width: 90vw;
+  border-collapse: collapse;
+}
+
+.creditCards_table_wrapper th {
+  width: 33%;
+  font-size: 20px;
+  background-color: rgb(48, 56, 65);
+  color: white;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.creditCards_table_wrapper td {
+  width: 33%;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid black;
+  padding: 20px 0;
+}
+
+.creditCards_table_wrapper tr:nth-child(even) {
+  background-color: lightgray;
+}
+
+.creditCards_table_wrapper tr:hover {
+  background-color: darkgray;
+}
+
+.table_footer {
+  display: flex;
+  justify-content: center;
+}
+
+.add_creditCard_form_wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}

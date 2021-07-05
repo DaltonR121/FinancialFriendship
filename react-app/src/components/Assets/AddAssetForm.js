@@ -6,10 +6,10 @@ const AddAssetForm = ({ assetAddForm, setAssetAddForm }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [assetDescription, setAssetDescription] = useState('');
-  const [assetCurrentValue, setAssetCurrentValue] = useState('');
-  const [assetAmountOwed, setAssetAmountOwed] = useState();
-  const [assetInterestRate, setAssetInterestRate] = useState();
-  const [assetDueDate, setAssetDueDate] = useState();
+  const [assetCurrentValue, setAssetCurrentValue] = useState(0);
+  const [assetAmountOwed, setAssetAmountOwed] = useState(0);
+  const [assetInterestRate, setAssetInterestRate] = useState(0);
+  const [assetDueDate, setAssetDueDate] = useState(0);
 
   const userId = useSelector((state) => state.session.user.id);
 
@@ -49,8 +49,8 @@ const AddAssetForm = ({ assetAddForm, setAssetAddForm }) => {
         <input
           name="assetCurrentValue"
           type="number"
-          value={assetAmountOwed}
-          onChange={(e) => setAssetAmountOwed(e.target.value)}
+          value={assetCurrentValue}
+          onChange={(e) => setAssetCurrentValue(e.target.value)}
         />
       </div>
       <div>
@@ -58,8 +58,8 @@ const AddAssetForm = ({ assetAddForm, setAssetAddForm }) => {
         <input
           name="assetAmountOwed"
           type="number"
-          value={assetCurrentValue}
-          onChange={(e) => setAssetCurrentValue(e.target.value)}
+          value={assetAmountOwed}
+          onChange={(e) => setAssetAmountOwed(e.target.value)}
         />
       </div>
       <div>

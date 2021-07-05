@@ -48,7 +48,7 @@ const EditAssetForm = ({ assetEditForm, setAssetEditForm, asset }) => {
         <input
           name="assetCurrentValue"
           type="number"
-          value={assetAmountOwed}
+          value={assetCurrentValue}
           onChange={(e) => setAssetAmountOwed(e.target.value)}
         />
       </div>
@@ -57,7 +57,7 @@ const EditAssetForm = ({ assetEditForm, setAssetEditForm, asset }) => {
         <input
           name="assetAmountOwed"
           type="number"
-          value={assetCurrentValue}
+          value={assetAmountOwed}
           onChange={(e) => setAssetCurrentValue(e.target.value)}
         />
       </div>

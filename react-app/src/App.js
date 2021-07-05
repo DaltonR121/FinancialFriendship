@@ -7,6 +7,7 @@ import Splash from "./components/Splash/Splash"
 import NavBar from "./components/NavBar/NavBar";
 import Portfolio from "./components/Portfolio/Portfolio";
 import Accounts from "./components/Accounts/Accounts"
+import Assets from "./components/Assets/Assets"
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
@@ -53,6 +54,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/accounts" exact={true} >
           <Accounts />
+        </ProtectedRoute>
+        <ProtectedRoute path="/assets" exact={true} >
+          <Assets />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

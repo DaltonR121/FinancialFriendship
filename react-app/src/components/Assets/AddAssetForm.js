@@ -1,26 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createUserAccount } from '../../store/accounts';
+import { createUserAsset } from '../../store/assets';
 
-const AddAccountForm = ({ accountAddForm, setAccountAddForm }) => {
+const AddAssetForm = ({ assetAddForm, setAssetAddForm }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
-  const [accountName, setAccountName] = useState("");
-  const [accountType, setAccountType] = useState("Checking");
-  const [balance, setBalance] = useState("");
+  const [assetDescription, setAssetDescription] = useState('');
+  const [assetCurrentValue, setAssetCurrentValue] = useState('');
+  const [assetAmountOwed, setAssetAmountOwed] = useState();
+  const [assetInterestRate, setAssetInterestRate] = useState();
+  const [assetDueDate, setAssetDueDate] = useState();
 
   const userId = useSelector((state) => state.session.user.id);
 
   const submitEvent = (e) => {
+    console.log(e)
     e.preventDefault()
-    let account = {
+    let asset = {
       user_id: userId,
-      account_name: accountName,
-      account_type: accountType,
-      balance
+      asset_description: assetDescription,
+      asset_current_value: assetCurrentValue,
+      asset_amount_owed: assetAmountOwed,
+      asset_interest_rate: assetInterestRate,
+      asset_due_date: assetDueDate
     }
-    dispatch(createUserAccount(account))
-    setAccountAddForm(false)
+    dispatch(createUserAsset(asset))
+    setAssetAddForm(false)
   }
 
   return (
@@ -31,36 +36,56 @@ const AddAccountForm = ({ accountAddForm, setAccountAddForm }) => {
         ))}
       </div>
       <div>
-        <label htmlFor="accountName">Account Name:</label>
+        <label htmlFor="assetDescription">Asset Description:</label>
         <input
-          name="accountName"
+          name="assetDescription"
           type="text"
-          value={accountName}
-          onChange={(e) => setAccountName(e.target.value)}
+          value={assetDescription}
+          onChange={(e) => setAssetDescription(e.target.value)}
         />
       </div>
       <div>
-        <label htmlFor="accountType">Account Type:</label>
-          <select onChange={(e) => setAccountType(e.target.value)} name="accountType">
-            <option value="Checking">Checking</option>
-            <option value="Savings">Savings</option>
-            <option value="Retirement">Retirement</option>
-          </select>
+        <label htmlFor="assetCurrentValue">Current Value:</label>
+        <input
+          name="assetCurrentValue"
+          type="number"
+          value={assetAmountOwed}
+          onChange={(e) => setAssetAmountOwed(e.target.value)}
+        />
       </div>
       <div>
-        <label htmlFor="balance">Balance:</label>
+        <label htmlFor="assetAmountOwed">Amount Owed:</label>
         <input
-          name="balance"
+          name="assetAmountOwed"
           type="number"
-          value={balance}
-          onChange={(e) => setBalance(e.target.value)}
+          value={assetCurrentValue}
+          onChange={(e) => setAssetCurrentValue(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="assetInterestRate">Interest Rate:</label>
+        <input
+          name="assetInterestRate"
+          type="number"
+          value={assetInterestRate}
+          onChange={(e) => setAssetInterestRate(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="dueDate">Due Date:</label>
+        <input
+          name="dueDate"
+          type="number"
+          value={assetDueDate}
+          onChange={(e) => setAssetDueDate(e.target.value)}
         />
       </div>
       <div>
         <button type="submit">Add</button>
+        <button onClick={(e) => setAssetAddForm(false)}>Cancel</button>
       </div>
     </form>
   );
 };
 
-export default AddAccountForm;
+export default AddAssetForm;

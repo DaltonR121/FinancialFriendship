@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editUserAccount } from '../../store/accounts';
+import { editUserAsset } from '../../store/assets';
 
-const EditAccountForm = ({ accountEditForm, setAccountEditForm, account }) => {
+const EditAssetForm = ({ assetEditForm, setAssetEditForm, asset }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
-  const [accountName, setAccountName] = useState(account.account_name);
-  const [accountType, setAccountType] = useState(account.account_type);
-  const [balance, setBalance] = useState(account.balance);
+  const [assetDescription, setAssetDescription] = useState(asset.asset_description);
+  const [assetCurrentValue, setAssetCurrentValue] = useState(asset.current_value);
+  const [assetAmountOwed, setAssetAmountOwed] = useState(asset.amount_owed);
+  const [assetInterestRate, setAssetInterestRate] = useState(asset.interest_rate);
+  const [assetDueDate, setAssetDueDate] = useState(asset.due_date);
 
   const userId = useSelector((state) => state.session.user.id);
 
   const submitEvent = (e) => {
     e.preventDefault()
-    let accountUpdate = {
-      // table id not being passed...? Start here
-      id: account.id,
+    let assetUpdate = {
       user_id: userId,
-      account_name: accountName,
-      account_type: accountType,
-      balance
+      asset_description: assetDescription,
+      asset_current_value: assetCurrentValue,
+      asset_amount_owed: assetAmountOwed,
+      asset_interest_rate: assetInterestRate,
+      asset_due_date: assetDueDate
     }
-    dispatch(editUserAccount(accountUpdate))
-    setAccountEditForm(false)
+    dispatch(editUserAsset(assetUpdate))
+    setAssetEditForm(false)
   }
 
   return (
@@ -33,36 +35,56 @@ const EditAccountForm = ({ accountEditForm, setAccountEditForm, account }) => {
         ))}
       </div>
       <div>
-        <label htmlFor="accountName">Account Name:</label>
+        <label htmlFor="assetDescription">Asset Description:</label>
         <input
-          name="accountName"
+          name="assetDescription"
           type="text"
-          value={accountName}
-          onChange={(e) => setAccountName(e.target.value)}
+          value={assetDescription}
+          onChange={(e) => setAssetDescription(e.target.value)}
         />
       </div>
       <div>
-        <label htmlFor="accountType">Account Type:</label>
-          <select value={accountType} onChange={(e) => setAccountType(e.target.value)} name="accountType">
-            <option value="Checking">Checking</option>
-            <option value="Savings">Savings</option>
-            <option value="Retirement">Retirement</option>
-          </select>
-      </div>
-      <div>
-        <label htmlFor="balance">Balance:</label>
+        <label htmlFor="assetCurrentValue">Current Value:</label>
         <input
-          name="balance"
+          name="assetCurrentValue"
           type="number"
-          value={balance}
-          onChange={(e) => setBalance(e.target.value)}
+          value={assetAmountOwed}
+          onChange={(e) => setAssetAmountOwed(e.target.value)}
         />
       </div>
       <div>
-        <button type="submit">Edit</button>
+        <label htmlFor="assetAmountOwed">Amount Owed:</label>
+        <input
+          name="assetAmountOwed"
+          type="number"
+          value={assetCurrentValue}
+          onChange={(e) => setAssetCurrentValue(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="assetInterestRate">Interest Rate:</label>
+        <input
+          name="assetInterestRate"
+          type="number"
+          value={assetInterestRate}
+          onChange={(e) => setAssetInterestRate(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="dueDate">Due Date:</label>
+        <input
+          name="dueDate"
+          type="number"
+          value={assetDueDate}
+          onChange={(e) => setAssetDueDate(e.target.value)}
+        />
+      </div>
+      <div>
+        <button type="submit">Save</button>
+        <button onClick={(e) => setAssetEditForm(false)}>Cancel</button>
       </div>
     </form>
   );
 };
 
-export default EditAccountForm;
+export default EditAssetForm;

@@ -1,69 +1,79 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserAccount, deleteUserAccount } from '../../store/accounts'
-import AddAccountForm from './AddAccountForm';
-import EditAccountForm from './EditAccountForm'
-import styles from './Accounts.module.css'
+import { getUserAsset, deleteUserAsset } from '../../store/assets'
+import AddAssetForm from './AddAssetForm';
+import EditAssetForm from './EditAssetForm'
+import styles from './Assets.module.css'
 
-const Accounts = () => {
-  const [accountAddForm, setAccountAddForm] = useState(false);
-  const [accountEditForm, setAccountEditForm] = useState(false);
-  const [accountId, setAccountId] = useState();
-  const [accountName, setAccountName] = useState('');
-  const [accountType, setAccountType] = useState('');
-  const [balance, setBalance] = useState();
-  const [account, setAccount] = useState();
+const Assets = () => {
+  const [assetAddForm, setAssetAddForm] = useState(false);
+  const [assetEditForm, setAssetEditForm] = useState(false);
+  const [asset, setAsset] = useState();
 
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user.id);
-  const accounts = useSelector((state) => Object.values(state.accounts));
+  const assets = useSelector((state) => Object.values(state.assets));
 
-  const accountsTotal = () => {
+  const assetsTotal = () => {
     let total = 0;
-    accounts.map(account => {
-      total += account.balance 
+    assets.map(asset => {
+      total += asset.current_value
     })
 
     return total;
   }
 
-  const deleteAccount = (accountId) => {
-    dispatch(deleteUserAccount(accountId))
+  const assetsOwed = () => {
+    let total = 0;
+    assets.map(asset => {
+      total += asset.amount_owed
+    })
+
+    return total;
   }
 
-  const editFormEvent = (account) => {
-      setAccountId(account.id)
-      setAccountName(account.account_name)
-      setAccountType(account.account_type)
-      setBalance(account.balance)
+  const deleteAsset = (assetId) => {
+    dispatch(deleteUserAsset(assetId))
   }
+
+  // const editFormEvent = (asset) => {
+  //     setAssetId(asset.id)
+  //     setAssetName(asset.asset_name)
+  //     setAssetType(asset.asset_type)
+  //     setBalance(asset.balance)
+  // }
   
   useEffect(() => {
-    dispatch(getUserAccount(userId));
+    dispatch(getUserAsset(userId));
   }, [])
 
   return (
-    <div className={styles.accounts__wrapper}>
-      <h1>Your Accounts</h1>
-      <h2>Accounts Total: {accountsTotal()}</h2>
-      <div onClick={(e) => setAccountAddForm(true)} className={styles.add_account}>
+    <div className={styles.assets__wrapper}>
+      <h1>Your Assets</h1>
+      <h2>Assets Current Value: {assetsTotal()}</h2>
+      <h2>Amount Owed: {assetsOwed()}</h2>
+      <div onClick={(e) => setAssetAddForm(true)} className={styles.add_asset}>
         <h2>+</h2>
       </div>
-      <div className={styles.accounts_table_wrapper}>
+      <div className={styles.assets_table_wrapper}>
         <table>
           <thead>
             <tr>
-              <th>Account Name</th>
-              <th>Account Type</th>
-              <th>Balance</th>
+              <th>Asset Description</th>
+              <th>Current Value</th>
+              <th>Amount Owed</th>
+              <th>Interest Rate</th>
+              <th>Due Date</th>
             </tr>
           </thead>
           <tbody>
-            {accounts.map((account) => (
-              <tr onClick={(e) => setAccount(account)} onDoubleClick={(e) => setAccountEditForm(account)} key={account.id}>
-                <td>{account.account_name}</td>
-                <td>{account.account_type}</td>
-                <td>{account.balance}<button onClick={(e) => deleteAccount(account.id)}>X</button></td>
+            {assets.map((asset) => (
+              <tr onClick={(e) => setAsset(asset)} onDoubleClick={(e) => setAssetEditForm(asset)} key={asset.id}>
+                <td>{asset.asset_description}</td>
+                <td>{asset.current_value}</td>
+                <td>{asset.amount_owed}</td>
+                <td>{asset.interest_rate}%</td>
+                <td>{asset.due_date}<button onClick={(e) => deleteAsset(asset.id)}>X</button></td>
               </tr>
             ))}
           </tbody>
@@ -72,16 +82,16 @@ const Accounts = () => {
       <div className={styles.table_footer}>
         <p>* Please DOUBLE-CLICK on any row you would like to make changes to!</p>
       </div>
-      {accountAddForm ? (
-        <div className={styles.add_account_form_wrapper}>
-          <AddAccountForm accountAddForm={accountAddForm} setAccountAddForm={setAccountAddForm} />
+      {assetAddForm ? (
+        <div className={styles.add_asset_form_wrapper}>
+          <AddAssetForm assetAddForm={assetAddForm} setAssetAddForm={setAssetAddForm} />
         </div>
       ) : null}
-      {accountEditForm ? (
-        <div className={styles.add_account_form_wrapper}>
-          <EditAccountForm accountEditForm={accountEditForm} 
-            setAccountEditForm={setAccountEditForm}
-            account={account}
+      {assetEditForm ? (
+        <div className={styles.add_asset_form_wrapper}>
+          <EditAssetForm assetEditForm={assetEditForm} 
+            setAssetEditForm={setAssetEditForm}
+            asset={asset}
              />
         </div>
       ) : null}
@@ -89,4 +99,4 @@ const Accounts = () => {
   );
 }
 
-export default Accounts;
+export default Assets;

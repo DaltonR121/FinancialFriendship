@@ -58,6 +58,7 @@ const AddAccountForm = ({ accountAddForm, setAccountAddForm }) => {
       </div>
       <div>
         <button type="submit">Add</button>
+        <button onClick={(e) => setAccountAddForm(false)}>Cancel</button>
       </div>
     </form>
   );

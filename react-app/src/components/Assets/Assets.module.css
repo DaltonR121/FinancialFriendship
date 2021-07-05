@@ -1,14 +1,14 @@
-.accounts__wrapper {
+.assets__wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.accounts__wrapper h1 {
+.assets__wrapper h1 {
   margin: 20px;
 }
 
-.add_account {
+.add_asset {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,11 +18,11 @@
   background-color: rgb(254, 255, 197);
 }
 
-.add_account:hover {
+.add_asset:hover {
   background-color: rgb(253, 255, 133);
 }
 
-.accounts_table_wrapper {
+.assets_table_wrapper {
   display: flex;
   justify-content: center;
   margin: 20px;
@@ -30,12 +30,12 @@
   align-items: center;
 }
 
-.accounts_table_wrapper table {
+.assets_table_wrapper table {
   width: 90vw;
   border-collapse: collapse;
 }
 
-.accounts_table_wrapper th {
+.assets_table_wrapper th {
   width: 33%;
   font-size: 20px;
   background-color: rgb(48, 56, 65);
@@ -44,7 +44,7 @@
   padding: 20px;
 }
 
-.accounts_table_wrapper td {
+.assets_table_wrapper td {
   width: 33%;
   font-weight: bold;
   text-align: center;
@@ -52,11 +52,11 @@
   padding: 20px 0;
 }
 
-.accounts_table_wrapper tr:nth-child(even) {
+.assets_table_wrapper tr:nth-child(even) {
   background-color: lightgray;
 }
 
-.accounts_table_wrapper tr:hover {
+.assets_table_wrapper tr:hover {
   background-color: darkgray;
 }
 
@@ -65,7 +65,7 @@
   justify-content: center;
 }
 
-.add_account_form_wrapper {
+.add_asset_form_wrapper {
   display: flex;
   flex-direction: column;
   margin: 20px;

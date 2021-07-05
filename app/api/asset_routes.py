@@ -10,10 +10,10 @@ def createAsset():
   asset = Asset(
     user_id = new_asset['user_id'],
     asset_description = new_asset['asset_description'],
-    current_value = new_asset['current_value'],
-    amount_owed = new_asset['amount_owed'],
-    interest_rate = new_asset['interest_rate'], 
-    due_date = new_asset['due_date']
+    current_value = new_asset['asset_current_value'],
+    amount_owed = new_asset['asset_amount_owed'],
+    interest_rate = new_asset['asset_interest_rate'], 
+    due_date = new_asset['asset_due_date']
   )
   db.session.add(asset)
   db.session.commit()

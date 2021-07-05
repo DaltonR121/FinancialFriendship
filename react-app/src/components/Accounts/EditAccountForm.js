@@ -59,7 +59,8 @@ const EditAccountForm = ({ accountEditForm, setAccountEditForm, account }) => {
         />
       </div>
       <div>
-        <button type="submit">Edit</button>
+        <button type="submit">Save</button>
+        <button onClick={(e) => setAccountEditForm(false)}>Cancel</button>
       </div>
     </form>
   );

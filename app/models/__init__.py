@@ -4,4 +4,4 @@ from .account import Account
 from .asset import Asset
 from .credit_card import CreditCards
 from .other_obligation import OtherObligation
-from .monthly_reoccuring import MonthlyReoccuring
+from .monthly_reoccurring import MonthlyReoccurring

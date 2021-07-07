@@ -5,12 +5,13 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 
-from .models import db, User, Account, Asset, CreditCards, OtherObligation, MonthlyReoccuring
+from .models import db, User, Account, Asset, CreditCards, OtherObligation, MonthlyReoccurring
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.account_routes import account_routes
 from .api.asset_routes import asset_routes
 from .api.credit_card_routes import credit_card_routes
+from .api.monthly_reoccurring_routes import monthly_reoccurring_routes
 from .api.other_obligation_routes import other_obligation_routes
 
 from .seeds import seed_commands
@@ -38,6 +39,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(account_routes, url_prefix='/api/accounts')
 app.register_blueprint(asset_routes, url_prefix='/api/assets')
 app.register_blueprint(credit_card_routes, url_prefix='/api/creditCards')
+app.register_blueprint(monthly_reoccurring_routes, url_prefix='/api/monthlyReoccurring')
 app.register_blueprint(other_obligation_routes, url_prefix='/api/otherObligations')
 db.init_app(app)
 Migrate(app, db)

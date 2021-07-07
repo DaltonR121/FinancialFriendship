@@ -1,7 +1,7 @@
 from .db import db
 
-class MonthlyReoccuring(db.Model):
-  __tablename__ = 'monthly_reoccurings'
+class MonthlyReoccurring(db.Model):
+  __tablename__ = 'monthly_reoccurrings'
 
   id = db.Column(db.Integer, primary_key = True)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)

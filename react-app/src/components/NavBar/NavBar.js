@@ -91,8 +91,8 @@ const NavBar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/reoccuring" exact={true} activeClassName={styles.active}>
-              Monthly Reoccuring
+            <NavLink to="/reoccurring" exact={true} activeClassName={styles.active}>
+              Monthly Reoccurring
             </NavLink>
           </li>
           <li>

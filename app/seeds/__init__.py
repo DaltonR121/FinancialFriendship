@@ -4,6 +4,7 @@ from .users import seed_users, undo_users
 from .accounts import seed_accounts, undo_accounts
 from .assets import seed_assets, undo_assets
 from .credit_cards import seed_creditCards, undo_creditCards
+from .monthly_reoccurring import seed_monthly_reoccurring, undo_monthly_reoccurring
 from .other_obligations import seed_other_obligations, undo_other_obligations
 
 # Creates a seed group to hold our commands
@@ -17,6 +18,7 @@ def seed():
     seed_accounts()
     seed_assets()
     seed_creditCards()
+    seed_monthly_reoccurring()
     seed_other_obligations()
     # Add other seed functions here
 
@@ -27,5 +29,6 @@ def undo():
     undo_accounts()
     undo_assets()
     undo_creditCards()
+    undo_monthly_reoccurring()
     undo_other_obligations()
     # Add other undo functions here

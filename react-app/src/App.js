@@ -63,6 +63,9 @@ function App() {
         <ProtectedRoute path="/credit_cards" exact={true} >
           <CreditCards />
         </ProtectedRoute>
+        <ProtectedRoute path="/reoccurring" exact={true} >
+          <OtherObligations />
+        </ProtectedRoute>
         <ProtectedRoute path="/other" exact={true} >
           <OtherObligations />
         </ProtectedRoute>

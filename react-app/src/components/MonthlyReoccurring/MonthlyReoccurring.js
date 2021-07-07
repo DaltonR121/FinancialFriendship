@@ -1,58 +1,58 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserOtherObligation, deleteUserOtherObligation } from '../../store/otherObligations'
-import AddOtherObligationForm from './AddOtherObligationsForm';
-import EditOtherObligationForm from './EditOtherObligationsForm'
-import styles from './OtherObligations.module.css'
+import { getUserMonthlyReoccurring, deleteUserMonthlyReoccurring } from '../../store/monthlyReoccurrings'
+import AddMonthlyReoccurringForm from './AddMonthlyReoccurringForm';
+import EditMonthlyReoccurringForm from './EditMonthlyReoccurringForm'
+import styles from './MonthlyReoccurring.module.css'
 
-const OtherObligations = () => {
-  const [otherObligationAddForm, setOtherObligationAddForm] = useState(false);
-  const [otherObligationEditForm, setOtherObligationEditForm] = useState(false);
-  const [otherObligation, setOtherObligation] = useState();
+const MonthlyReoccurrings = () => {
+  const [monthlyReoccurringAddForm, setMonthlyReoccurringAddForm] = useState(false);
+  const [monthlyReoccurringEditForm, setMonthlyReoccurringEditForm] = useState(false);
+  const [monthlyReoccurring, setMonthlyReoccurring] = useState();
 
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user.id);
-  const otherObligations = useSelector((state) => Object.values(state.otherObligations));
+  const monthlyReoccurrings = useSelector((state) => Object.values(state.monthlyReoccurrings));
 
-  const otherObligationsTotal = () => {
+  const monthlyReoccurringsTotal = () => {
     let total = 0;
-    otherObligations.map(otherObligation => {
-      total += otherObligation.current_balance 
+    monthlyReoccurrings.map(monthlyReoccurring => {
+      total += monthlyReoccurring.amount 
     })
 
     return total;
   }
 
-  const deleteOtherObligation = (otherObligationId) => {
-    dispatch(deleteUserOtherObligation(otherObligationId))
+  const deleteMonthlyReoccurring = (monthlyReoccurringId) => {
+    dispatch(deleteUserMonthlyReoccurring(monthlyReoccurringId))
   }
   
   useEffect(() => {
-    dispatch(getUserOtherObligation(userId));
+    dispatch(getUserMonthlyReoccurring(userId));
   }, [])
 
   return (
-    <div className={styles.otherObligations__wrapper}>
-      <h1>Your OtherObligations</h1>
-      <h2>OtherObligations Total: {otherObligationsTotal()}</h2>
-      <div onClick={(e) => setOtherObligationAddForm(true)} className={styles.add_otherObligation}>
+    <div className={styles.monthlyReoccurrings__wrapper}>
+      <h1>Your MonthlyReoccurrings</h1>
+      <h2>MonthlyReoccurrings Total: ${monthlyReoccurringsTotal()}</h2>
+      <div onClick={(e) => setMonthlyReoccurringAddForm(true)} className={styles.add_monthlyReoccurring}>
         <h2>+</h2>
       </div>
-      <div className={styles.otherObligations_table_wrapper}>
+      <div className={styles.monthlyReoccurrings_table_wrapper}>
         <table>
           <thead>
             <tr>
               <th>Description</th>
-              <th>Current Balance</th>
+              <th>Amount</th>
               <th>Due Date</th>
             </tr>
           </thead>
           <tbody>
-            {otherObligations.map((otherObligation) => (
-              <tr onClick={(e) => setOtherObligation(otherObligation)} onDoubleClick={(e) => setOtherObligationEditForm(otherObligation)} key={otherObligation.id}>
-                <td>{otherObligation.account_description}</td>
-                <td>{otherObligation.current_balance}</td>
-                <td>{otherObligation.due_date}<button onClick={(e) => deleteOtherObligation(otherObligation.id)}>X</button></td>
+            {monthlyReoccurrings.map((monthlyReoccurring) => (
+              <tr onClick={(e) => setMonthlyReoccurring(monthlyReoccurring)} onDoubleClick={(e) => setMonthlyReoccurringEditForm(monthlyReoccurring)} key={monthlyReoccurring.id}>
+                <td>{monthlyReoccurring.account_description}</td>
+                <td>${monthlyReoccurring.amount}</td>
+                <td>{monthlyReoccurring.due_date}<button onClick={(e) => deleteMonthlyReoccurring(monthlyReoccurring.id)}>X</button></td>
               </tr>
             ))}
           </tbody>
@@ -61,16 +61,16 @@ const OtherObligations = () => {
       <div className={styles.table_footer}>
         <p>* Please DOUBLE-CLICK on any row you would like to make changes to!</p>
       </div>
-      {otherObligationAddForm ? (
-        <div className={styles.add_otherObligation_form_wrapper}>
-          <AddOtherObligationForm otherObligationAddForm={otherObligationAddForm} setOtherObligationAddForm={setOtherObligationAddForm} />
+      {monthlyReoccurringAddForm ? (
+        <div className={styles.add_monthlyReoccurring_form_wrapper}>
+          <AddMonthlyReoccurringForm monthlyReoccurringAddForm={monthlyReoccurringAddForm} setMonthlyReoccurringAddForm={setMonthlyReoccurringAddForm} />
         </div>
       ) : null}
-      {otherObligationEditForm ? (
-        <div className={styles.add_otherObligation_form_wrapper}>
-          <EditOtherObligationForm otherObligationEditForm={otherObligationEditForm} 
-            setOtherObligationEditForm={setOtherObligationEditForm}
-            otherObligation={otherObligation}
+      {monthlyReoccurringEditForm ? (
+        <div className={styles.add_monthlyReoccurring_form_wrapper}>
+          <EditMonthlyReoccurringForm monthlyReoccurringEditForm={monthlyReoccurringEditForm} 
+            setMonthlyReoccurringEditForm={setMonthlyReoccurringEditForm}
+            monthlyReoccurring={monthlyReoccurring}
              />
         </div>
       ) : null}
@@ -78,4 +78,4 @@ const OtherObligations = () => {
   );
 }
 
-export default OtherObligations;
+export default MonthlyReoccurrings;

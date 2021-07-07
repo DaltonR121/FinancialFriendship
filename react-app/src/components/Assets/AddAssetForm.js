@@ -14,7 +14,6 @@ const AddAssetForm = ({ assetAddForm, setAssetAddForm }) => {
   const userId = useSelector((state) => state.session.user.id);
 
   const submitEvent = (e) => {
-    console.log(e)
     e.preventDefault()
     let asset = {
       user_id: userId,

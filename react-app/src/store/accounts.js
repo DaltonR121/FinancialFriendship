@@ -46,7 +46,6 @@ export const getUserAccount = (userId) => async (dispatch) => {
 }
 
 export const editUserAccount = (account) => async (dispatch) => {
-  console.log(account)
   const accountUpdate = await fetch(`/api/accounts/edit`, {
     method: 'PATCH',
     headers: {

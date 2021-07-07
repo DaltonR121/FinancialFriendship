@@ -14,7 +14,6 @@ const AddCreditCardForm = ({ creditCardAddForm, setCreditCardAddForm }) => {
   const userId = useSelector((state) => state.session.user.id);
 
   const submitEvent = (e) => {
-    console.log(e)
     e.preventDefault()
     let creditCard = {
       user_id: userId,
@@ -27,8 +26,6 @@ const AddCreditCardForm = ({ creditCardAddForm, setCreditCardAddForm }) => {
     dispatch(createUserCreditCard(creditCard))
     setCreditCardAddForm(false)
   }
-
-  console.log(accountName)
 
   return (
     <form onSubmit={submitEvent}>

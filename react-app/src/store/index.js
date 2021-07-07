@@ -4,6 +4,7 @@ import session from "./session"
 import accounts from "./accounts"
 import assets from "./assets"
 import creditCards from "./creditCards"
+import monthlyReoccurrings from "./monthlyReoccurrings"
 import otherObligations from "./otherObligations";
 
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     accounts,
     assets,
     creditCards,
+    monthlyReoccurrings,
     otherObligations
 });
 

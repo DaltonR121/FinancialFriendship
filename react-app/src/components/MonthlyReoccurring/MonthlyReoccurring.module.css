@@ -1,14 +1,14 @@
-.otherObligations__wrapper {
+.monthlyReoccurrings__wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.otherObligations__wrapper h1 {
+.monthlyReoccurrings__wrapper h1 {
   margin: 20px;
 }
 
-.add_otherObligation {
+.add_monthlyReoccurring {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,11 +18,11 @@
   background-color: rgb(254, 255, 197);
 }
 
-.add_otherObligation:hover {
+.add_monthlyReoccurring:hover {
   background-color: rgb(253, 255, 133);
 }
 
-.otherObligations_table_wrapper {
+.monthlyReoccurrings_table_wrapper {
   display: flex;
   justify-content: center;
   margin: 20px;
@@ -30,12 +30,12 @@
   align-items: center;
 }
 
-.otherObligations_table_wrapper table {
+.monthlyReoccurrings_table_wrapper table {
   width: 90vw;
   border-collapse: collapse;
 }
 
-.otherObligations_table_wrapper th {
+.monthlyReoccurrings_table_wrapper th {
   width: 33%;
   font-size: 20px;
   background-color: rgb(48, 56, 65);
@@ -44,7 +44,7 @@
   padding: 20px;
 }
 
-.otherObligations_table_wrapper td {
+.monthlyReoccurrings_table_wrapper td {
   width: 33%;
   font-weight: bold;
   text-align: center;
@@ -52,11 +52,11 @@
   padding: 20px 0;
 }
 
-.otherObligations_table_wrapper tr:nth-child(even) {
+.monthlyReoccurrings_table_wrapper tr:nth-child(even) {
   background-color: lightgray;
 }
 
-.otherObligations_table_wrapper tr:hover {
+.monthlyReoccurrings_table_wrapper tr:hover {
   background-color: darkgray;
 }
 
@@ -65,7 +65,7 @@
   justify-content: center;
 }
 
-.add_otherObligation_form_wrapper {
+.add_monthlyReoccurring_form_wrapper {
   display: flex;
   flex-direction: column;
   margin: 20px;

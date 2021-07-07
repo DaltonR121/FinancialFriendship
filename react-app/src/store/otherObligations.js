@@ -46,7 +46,6 @@ export const getUserOtherObligation = (userId) => async (dispatch) => {
 }
 
 export const editUserOtherObligation = (otherObligation) => async (dispatch) => {
-  console.log(otherObligation)
   const otherObligationUpdate = await fetch(`/api/otherObligations/edit`, {
     method: 'PATCH',
     headers: {

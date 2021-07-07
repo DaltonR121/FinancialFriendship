@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editUserOtherObligation } from '../../store/otherObligations';
+import { editUserMonthlyReoccurring } from '../../store/monthlyReoccurrings';
 
-const EditOtherObligationForm = ({ otherObligationEditForm, setOtherObligationEditForm, otherObligation }) => {
+const EditMonthlyReoccurringForm = ({ monthlyReoccurringEditForm, setMonthlyReoccurringEditForm, monthlyReoccurring }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
-  const [id, setId] = useState(otherObligation.id)
-  const [otherObligationDescription, setOtherObligationDescription] = useState(otherObligation.account_description);
-  const [otherObligationBalance, setOtherObligationBalance] = useState(otherObligation.current_balance);
-  const [otherObligationDueDate, setOtherObligationDueDate] = useState(otherObligation.due_date);
+  const [id, setId] = useState(monthlyReoccurring.id)
+  const [description, setDescription] = useState(monthlyReoccurring.account_description);
+  const [balance, setBalance] = useState(monthlyReoccurring.amount);
+  const [dueDate, setDueDate] = useState(monthlyReoccurring.due_date);
 
   const userId = useSelector((state) => state.session.user.id);
 
   const submitEvent = (e) => {
     e.preventDefault()
-    let otherObligationUpdate = {
+    let monthlyReoccurringUpdate = {
       id: id,
       user_id: userId,
-      description: otherObligationDescription,
-      current_balance: otherObligationBalance,
-      due_date: otherObligationDueDate
+      description: description,
+      amount: balance,
+      due_date: dueDate
     }
-    dispatch(editUserOtherObligation(otherObligationUpdate))
-    setOtherObligationEditForm(false)
+    dispatch(editUserMonthlyReoccurring(monthlyReoccurringUpdate))
+    setMonthlyReoccurringEditForm(false)
   }
 
   return (
@@ -33,21 +33,21 @@ const EditOtherObligationForm = ({ otherObligationEditForm, setOtherObligationEd
         ))}
       </div>
       <div>
-        <label htmlFor="otherObligationDescription">OtherObligation Name:</label>
+        <label htmlFor="description">MonthlyReoccurring Name:</label>
         <input
-          name="otherObligationDescription"
+          name="description"
           type="text"
-          value={otherObligationDescription}
-          onChange={(e) => setOtherObligationDescription(e.target.value)}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
       </div>
       <div>
-        <label htmlFor="balance">Current Balance:</label>
+        <label htmlFor="balance">Amount:</label>
         <input
           name="balance"
           type="number"
-          value={otherObligationBalance}
-          onChange={(e) => setOtherObligationBalance(e.target.value)}
+          value={balance}
+          onChange={(e) => setBalance(e.target.value)}
         />
       </div>
       <div>
@@ -55,16 +55,16 @@ const EditOtherObligationForm = ({ otherObligationEditForm, setOtherObligationEd
         <input
           name="dueDate"
           type="number"
-          value={otherObligationDueDate}
-          onChange={(e) => setOtherObligationDueDate(e.target.value)}
+          value={dueDate}
+          onChange={(e) => setDueDate(e.target.value)}
         />
       </div>
       <div>
         <button type="submit">Edit</button>
-        <button onClick={(e) => setOtherObligationEditForm(false)}>Cancel</button>
+        <button onClick={(e) => setMonthlyReoccurringEditForm(false)}>Cancel</button>
       </div>
     </form>
   );
 };
 
-export default EditOtherObligationForm;
+export default EditMonthlyReoccurringForm;

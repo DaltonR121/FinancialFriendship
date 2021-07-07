@@ -9,7 +9,7 @@ def seed_monthly_reoccurring():
   netflix = MonthlyReoccurring(user_id=1, account_description='Netflix', amount='17.99', due_date=20)
   hulu = MonthlyReoccurring(user_id=1, account_description='Hulu', amount='12.98', due_date=7)
   youtube_red = MonthlyReoccurring(user_id=1, account_description='YouTube Premium', amount='11.99', due_date=9)
-  mortgage = MonthlyReoccurring(user_id=1, account_description='Mortgage', amount='1254.68', due_date=0)
+  mortgage = MonthlyReoccurring(user_id=1, account_description='Mortgage', amount='1254.68', due_date=15)
   db.session.add(cell_phone)
   db.session.add(spotify)
   db.session.add(electric)

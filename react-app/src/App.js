@@ -9,6 +9,7 @@ import Portfolio from "./components/Portfolio/Portfolio";
 import Accounts from "./components/Accounts/Accounts"
 import Assets from "./components/Assets/Assets"
 import CreditCards from "./components/CreditCards/CreditCards"
+import MonthlyReoccurrings from "./components/MonthlyReoccurring/MonthlyReoccurring";
 import OtherObligations from "./components/OtherObligations/OtherObligations"
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
@@ -64,7 +65,7 @@ function App() {
           <CreditCards />
         </ProtectedRoute>
         <ProtectedRoute path="/reoccurring" exact={true} >
-          <OtherObligations />
+          <MonthlyReoccurrings />
         </ProtectedRoute>
         <ProtectedRoute path="/other" exact={true} >
           <OtherObligations />

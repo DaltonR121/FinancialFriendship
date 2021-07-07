@@ -46,7 +46,6 @@ export const getCreditCards = (userId) => async (dispatch) => {
 }
 
 export const editUserCreditCard = (creditCard) => async (dispatch) => {
-  console.log(creditCard)
   const creditCardUpdate = await fetch(`/api/creditCards/edit`, {
     method: 'PATCH',
     headers: {

@@ -46,7 +46,6 @@ export const getUserAsset = (userId) => async (dispatch) => {
 }
 
 export const editUserAsset = (asset) => async (dispatch) => {
-  console.log(asset)
   const assetUpdate = await fetch(`/api/assets/edit`, {
     method: 'PATCH',
     headers: {

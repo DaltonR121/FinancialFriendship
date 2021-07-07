@@ -6,15 +6,12 @@ import EditAccountForm from './EditAccountForm'
 import styles from './Accounts.module.css'
 
 const Accounts = () => {
+  const dispatch = useDispatch();
+  
   const [accountAddForm, setAccountAddForm] = useState(false);
   const [accountEditForm, setAccountEditForm] = useState(false);
-  const [accountId, setAccountId] = useState();
-  const [accountName, setAccountName] = useState('');
-  const [accountType, setAccountType] = useState('');
-  const [balance, setBalance] = useState();
   const [account, setAccount] = useState();
 
-  const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user.id);
   const accounts = useSelector((state) => Object.values(state.accounts));
 
@@ -23,21 +20,9 @@ const Accounts = () => {
     accounts.map(account => {
       total += account.balance 
     })
-
     return total;
   }
 
-  const deleteAccount = (accountId) => {
-    dispatch(deleteUserAccount(accountId))
-  }
-
-  const editFormEvent = (account) => {
-      setAccountId(account.id)
-      setAccountName(account.account_name)
-      setAccountType(account.account_type)
-      setBalance(account.balance)
-  }
-  
   useEffect(() => {
     dispatch(getUserAccount(userId));
   }, [])
@@ -63,7 +48,7 @@ const Accounts = () => {
               <tr onClick={(e) => setAccount(account)} onDoubleClick={(e) => setAccountEditForm(account)} key={account.id}>
                 <td>{account.account_name}</td>
                 <td>{account.account_type}</td>
-                <td>${account.balance}<button onClick={(e) => deleteAccount(account.id)}>X</button></td>
+                <td>${account.balance}<button onClick={(e) => dispatch(deleteUserAccount(account.id))}>X</button></td>
               </tr>
             ))}
           </tbody>

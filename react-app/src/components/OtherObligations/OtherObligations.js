@@ -6,11 +6,12 @@ import EditOtherObligationForm from './EditOtherObligationsForm'
 import styles from './OtherObligations.module.css'
 
 const OtherObligations = () => {
+  const dispatch = useDispatch();
+
   const [otherObligationAddForm, setOtherObligationAddForm] = useState(false);
   const [otherObligationEditForm, setOtherObligationEditForm] = useState(false);
   const [otherObligation, setOtherObligation] = useState();
 
-  const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user.id);
   const otherObligations = useSelector((state) => Object.values(state.otherObligations));
 
@@ -19,12 +20,7 @@ const OtherObligations = () => {
     otherObligations.map(otherObligation => {
       total += otherObligation.current_balance 
     })
-
     return total;
-  }
-
-  const deleteOtherObligation = (otherObligationId) => {
-    dispatch(deleteUserOtherObligation(otherObligationId))
   }
   
   useEffect(() => {
@@ -52,7 +48,7 @@ const OtherObligations = () => {
               <tr onClick={(e) => setOtherObligation(otherObligation)} onDoubleClick={(e) => setOtherObligationEditForm(otherObligation)} key={otherObligation.id}>
                 <td>{otherObligation.account_description}</td>
                 <td>${otherObligation.current_balance}</td>
-                <td>{otherObligation.due_date}<button onClick={(e) => deleteOtherObligation(otherObligation.id)}>X</button></td>
+                <td>{otherObligation.due_date}<button onClick={(e) => dispatch(deleteUserOtherObligation(otherObligation.id))}>X</button></td>
               </tr>
             ))}
           </tbody>

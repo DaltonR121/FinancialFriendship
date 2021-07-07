@@ -6,11 +6,12 @@ import EditMonthlyReoccurringForm from './EditMonthlyReoccurringForm'
 import styles from './MonthlyReoccurring.module.css'
 
 const MonthlyReoccurrings = () => {
+  const dispatch = useDispatch();
+
   const [monthlyReoccurringAddForm, setMonthlyReoccurringAddForm] = useState(false);
   const [monthlyReoccurringEditForm, setMonthlyReoccurringEditForm] = useState(false);
   const [monthlyReoccurring, setMonthlyReoccurring] = useState();
 
-  const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user.id);
   const monthlyReoccurrings = useSelector((state) => Object.values(state.monthlyReoccurrings));
 
@@ -19,12 +20,7 @@ const MonthlyReoccurrings = () => {
     monthlyReoccurrings.map(monthlyReoccurring => {
       total += monthlyReoccurring.amount 
     })
-
     return total;
-  }
-
-  const deleteMonthlyReoccurring = (monthlyReoccurringId) => {
-    dispatch(deleteUserMonthlyReoccurring(monthlyReoccurringId))
   }
   
   useEffect(() => {
@@ -52,7 +48,7 @@ const MonthlyReoccurrings = () => {
               <tr onClick={(e) => setMonthlyReoccurring(monthlyReoccurring)} onDoubleClick={(e) => setMonthlyReoccurringEditForm(monthlyReoccurring)} key={monthlyReoccurring.id}>
                 <td>{monthlyReoccurring.account_description}</td>
                 <td>${monthlyReoccurring.amount}</td>
-                <td>{monthlyReoccurring.due_date}<button onClick={(e) => deleteMonthlyReoccurring(monthlyReoccurring.id)}>X</button></td>
+                <td>{monthlyReoccurring.due_date}<button onClick={(e) => dispatch(deleteUserMonthlyReoccurring(monthlyReoccurring.id))}>X</button></td>
               </tr>
             ))}
           </tbody>

@@ -6,11 +6,12 @@ import EditCreditCardForm from './EditCreditCardForm'
 import styles from './CreditCards.module.css'
 
 const CreditCards = () => {
+  const dispatch = useDispatch();
+
   const [creditCardAddForm, setCreditCardAddForm] = useState(false);
   const [creditCardEditForm, setCreditCardEditForm] = useState(false);
   const [creditCard, setCreditCard] = useState(null);
 
-  const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user.id);
   const creditCards = useSelector((state) => Object.values(state.creditCards));
 
@@ -19,7 +20,6 @@ const CreditCards = () => {
     creditCards.map(creditCard => {
       total += creditCard.current_balance
     })
-
     return total.toFixed(2);
   }
 
@@ -30,14 +30,8 @@ const CreditCards = () => {
       balanceTotal += creditCard.current_balance
       limitTotal += creditCard.limit
     })
-
     const utilization = (balanceTotal / limitTotal) * 100
-
     return utilization.toFixed(2);
-  }
-
-  const deleteCreditCard = (creditCardId) => {
-    dispatch(deleteUserCreditCard(creditCardId))
   }
   
   useEffect(() => {
@@ -70,7 +64,7 @@ const CreditCards = () => {
                 <td>${creditCard.current_balance}</td>
                 <td>{creditCard.interest_rate}%</td>
                 <td>{creditCard.limit}</td>
-                <td>{creditCard.due_date}<button onClick={(e) => deleteCreditCard(creditCard.id)}>X</button></td>
+                <td>{creditCard.due_date}<button onClick={(e) => dispatch(deleteUserCreditCard(creditCard.id))}>X</button></td>
               </tr>
             ))}
           </tbody>

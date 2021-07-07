@@ -6,11 +6,12 @@ import EditAssetForm from './EditAssetForm'
 import styles from './Assets.module.css'
 
 const Assets = () => {
+  const dispatch = useDispatch();
+
   const [assetAddForm, setAssetAddForm] = useState(false);
   const [assetEditForm, setAssetEditForm] = useState(false);
   const [asset, setAsset] = useState();
 
-  const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user.id);
   const assets = useSelector((state) => Object.values(state.assets));
 
@@ -19,7 +20,6 @@ const Assets = () => {
     assets.map(asset => {
       total += asset.current_value
     })
-
     return total;
   }
 
@@ -28,20 +28,8 @@ const Assets = () => {
     assets.map(asset => {
       total += asset.amount_owed
     })
-
     return total;
   }
-
-  const deleteAsset = (assetId) => {
-    dispatch(deleteUserAsset(assetId))
-  }
-
-  // const editFormEvent = (asset) => {
-  //     setAssetId(asset.id)
-  //     setAssetName(asset.asset_name)
-  //     setAssetType(asset.asset_type)
-  //     setBalance(asset.balance)
-  // }
   
   useEffect(() => {
     dispatch(getUserAsset(userId));
@@ -73,7 +61,7 @@ const Assets = () => {
                 <td>${asset.current_value}</td>
                 <td>{asset.amount_owed}</td>
                 <td>{asset.interest_rate}%</td>
-                <td>{asset.due_date}<button onClick={(e) => deleteAsset(asset.id)}>X</button></td>
+                <td>{asset.due_date}<button onClick={(e) => dispatch(deleteUserAsset(asset.id))}>X</button></td>
               </tr>
             ))}
           </tbody>

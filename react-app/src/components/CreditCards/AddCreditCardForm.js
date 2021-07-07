@@ -28,6 +28,8 @@ const AddCreditCardForm = ({ creditCardAddForm, setCreditCardAddForm }) => {
     setCreditCardAddForm(false)
   }
 
+  console.log(accountName)
+
   return (
     <form onSubmit={submitEvent}>
       <div>

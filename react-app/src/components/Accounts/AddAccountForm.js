@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createUserAccount } from '../../store/accounts';
 
-const AddAccountForm = ({ accountAddForm, setAccountAddForm }) => {
+const AddAccountForm = ({ setAccountAddForm }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [accountName, setAccountName] = useState("");

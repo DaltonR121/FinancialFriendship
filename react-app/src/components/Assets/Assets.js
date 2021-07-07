@@ -77,10 +77,7 @@ const Assets = () => {
       ) : null}
       {assetEditForm ? (
         <div className={styles.add_asset_form_wrapper}>
-          <EditAssetForm assetEditForm={assetEditForm} 
-            setAssetEditForm={setAssetEditForm}
-            asset={asset}
-             />
+          <EditAssetForm setAssetEditForm={setAssetEditForm}asset={asset} />
         </div>
       ) : null}
     </div>

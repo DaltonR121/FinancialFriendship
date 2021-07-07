@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createUserAsset } from '../../store/assets';
 
-const AddAssetForm = ({ assetAddForm, setAssetAddForm }) => {
+const AddAssetForm = ({ setAssetAddForm }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [assetDescription, setAssetDescription] = useState('');

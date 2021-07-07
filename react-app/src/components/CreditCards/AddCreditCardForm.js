@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createUserCreditCard } from '../../store/creditCards';
 
-const AddCreditCardForm = ({ creditCardAddForm, setCreditCardAddForm }) => {
+const AddCreditCardForm = ({ setCreditCardAddForm }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [accountName, setAccountName] = useState('');

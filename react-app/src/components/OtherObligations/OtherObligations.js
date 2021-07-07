@@ -64,10 +64,7 @@ const OtherObligations = () => {
       ) : null}
       {otherObligationEditForm ? (
         <div className={styles.add_otherObligation_form_wrapper}>
-          <EditOtherObligationForm otherObligationEditForm={otherObligationEditForm} 
-            setOtherObligationEditForm={setOtherObligationEditForm}
-            otherObligation={otherObligation}
-             />
+          <EditOtherObligationForm setOtherObligationEditForm={setOtherObligationEditForm} otherObligation={otherObligation} />
         </div>
       ) : null}
     </div>

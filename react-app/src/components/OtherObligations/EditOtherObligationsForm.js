@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editUserOtherObligation } from '../../store/otherObligations';
 
-const EditOtherObligationForm = ({ otherObligationEditForm, setOtherObligationEditForm, otherObligation }) => {
+const EditOtherObligationForm = ({ setOtherObligationEditForm, otherObligation }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [id, setId] = useState(otherObligation.id)

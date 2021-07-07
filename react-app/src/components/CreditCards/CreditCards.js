@@ -80,10 +80,7 @@ const CreditCards = () => {
       ) : null}
       {creditCardEditForm ? (
         <div className={styles.add_creditCard_form_wrapper}>
-          <EditCreditCardForm creditCardEditForm={creditCardEditForm} 
-            setCreditCardEditForm={setCreditCardEditForm}
-            creditCard={creditCard}
-             />
+          <EditCreditCardForm setCreditCardEditForm={setCreditCardEditForm} creditCard={creditCard} />
         </div>
       ) : null}
     </div>

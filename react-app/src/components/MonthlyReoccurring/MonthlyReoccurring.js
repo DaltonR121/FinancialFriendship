@@ -64,10 +64,7 @@ const MonthlyReoccurrings = () => {
       ) : null}
       {monthlyReoccurringEditForm ? (
         <div className={styles.add_monthlyReoccurring_form_wrapper}>
-          <EditMonthlyReoccurringForm monthlyReoccurringEditForm={monthlyReoccurringEditForm} 
-            setMonthlyReoccurringEditForm={setMonthlyReoccurringEditForm}
-            monthlyReoccurring={monthlyReoccurring}
-             />
+          <EditMonthlyReoccurringForm setMonthlyReoccurringEditForm={setMonthlyReoccurringEditForm} monthlyReoccurring={monthlyReoccurring} />
         </div>
       ) : null}
     </div>

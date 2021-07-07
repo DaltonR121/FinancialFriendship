@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editUserAsset } from '../../store/assets';
 
-const EditAssetForm = ({ assetEditForm, setAssetEditForm, asset }) => {
+const EditAssetForm = ({ setAssetEditForm, asset }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [id, setId] = useState(asset.id)

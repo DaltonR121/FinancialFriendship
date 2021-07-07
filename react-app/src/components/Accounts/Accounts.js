@@ -59,15 +59,12 @@ const Accounts = () => {
       </div>
       {accountAddForm ? (
         <div className={styles.add_account_form_wrapper}>
-          <AddAccountForm accountAddForm={accountAddForm} setAccountAddForm={setAccountAddForm} />
+          <AddAccountForm setAccountAddForm={setAccountAddForm} />
         </div>
       ) : null}
       {accountEditForm ? (
         <div className={styles.add_account_form_wrapper}>
-          <EditAccountForm accountEditForm={accountEditForm} 
-            setAccountEditForm={setAccountEditForm}
-            account={account}
-             />
+          <EditAccountForm setAccountEditForm={setAccountEditForm} account={account} />
         </div>
       ) : null}
     </div>

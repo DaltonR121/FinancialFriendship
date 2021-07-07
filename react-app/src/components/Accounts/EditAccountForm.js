@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editUserAccount } from '../../store/accounts';
 
-const EditAccountForm = ({ accountEditForm, setAccountEditForm, account }) => {
+const EditAccountForm = ({ setAccountEditForm, account }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [accountName, setAccountName] = useState(account.account_name);
@@ -14,7 +14,6 @@ const EditAccountForm = ({ accountEditForm, setAccountEditForm, account }) => {
   const submitEvent = (e) => {
     e.preventDefault()
     let accountUpdate = {
-      // table id not being passed...? Start here
       id: account.id,
       user_id: userId,
       account_name: accountName,

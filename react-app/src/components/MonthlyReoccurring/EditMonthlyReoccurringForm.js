@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editUserMonthlyReoccurring } from '../../store/monthlyReoccurrings';
 
-const EditMonthlyReoccurringForm = ({ monthlyReoccurringEditForm, setMonthlyReoccurringEditForm, monthlyReoccurring }) => {
+const EditMonthlyReoccurringForm = ({ setMonthlyReoccurringEditForm, monthlyReoccurring }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [id, setId] = useState(monthlyReoccurring.id)

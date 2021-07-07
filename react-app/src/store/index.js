@@ -4,12 +4,14 @@ import session from "./session"
 import accounts from "./accounts"
 import assets from "./assets"
 import creditCards from "./creditCards"
+import otherObligations from "./otherObligations";
 
 const rootReducer = combineReducers({
     session,
     accounts,
     assets,
-    creditCards
+    creditCards,
+    otherObligations
 });
 
 

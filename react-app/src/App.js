@@ -9,6 +9,7 @@ import Portfolio from "./components/Portfolio/Portfolio";
 import Accounts from "./components/Accounts/Accounts"
 import Assets from "./components/Assets/Assets"
 import CreditCards from "./components/CreditCards/CreditCards"
+import OtherObligations from "./components/OtherObligations/OtherObligations"
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
@@ -61,6 +62,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/credit_cards" exact={true} >
           <CreditCards />
+        </ProtectedRoute>
+        <ProtectedRoute path="/other" exact={true} >
+          <OtherObligations />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

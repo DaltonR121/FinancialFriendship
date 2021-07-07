@@ -11,6 +11,7 @@ from .api.auth_routes import auth_routes
 from .api.account_routes import account_routes
 from .api.asset_routes import asset_routes
 from .api.credit_card_routes import credit_card_routes
+from .api.other_obligation_routes import other_obligation_routes
 
 from .seeds import seed_commands
 
@@ -37,6 +38,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(account_routes, url_prefix='/api/accounts')
 app.register_blueprint(asset_routes, url_prefix='/api/assets')
 app.register_blueprint(credit_card_routes, url_prefix='/api/creditCards')
+app.register_blueprint(other_obligation_routes, url_prefix='/api/otherObligations')
 db.init_app(app)
 Migrate(app, db)
 

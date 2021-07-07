@@ -33,8 +33,8 @@ const OtherObligations = () => {
 
   return (
     <div className={styles.otherObligations__wrapper}>
-      <h1>Your OtherObligations</h1>
-      <h2>OtherObligations Total: {otherObligationsTotal()}</h2>
+      <h1>Other Obligations</h1>
+      <h2>Total: ${otherObligationsTotal()}</h2>
       <div onClick={(e) => setOtherObligationAddForm(true)} className={styles.add_otherObligation}>
         <h2>+</h2>
       </div>
@@ -51,7 +51,7 @@ const OtherObligations = () => {
             {otherObligations.map((otherObligation) => (
               <tr onClick={(e) => setOtherObligation(otherObligation)} onDoubleClick={(e) => setOtherObligationEditForm(otherObligation)} key={otherObligation.id}>
                 <td>{otherObligation.account_description}</td>
-                <td>{otherObligation.current_balance}</td>
+                <td>${otherObligation.current_balance}</td>
                 <td>{otherObligation.due_date}<button onClick={(e) => deleteOtherObligation(otherObligation.id)}>X</button></td>
               </tr>
             ))}

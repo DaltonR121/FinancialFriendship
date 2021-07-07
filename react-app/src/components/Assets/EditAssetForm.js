@@ -5,6 +5,7 @@ import { editUserAsset } from '../../store/assets';
 const EditAssetForm = ({ assetEditForm, setAssetEditForm, asset }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
+  const [id, setId] = useState(asset.id)
   const [assetDescription, setAssetDescription] = useState(asset.asset_description);
   const [assetCurrentValue, setAssetCurrentValue] = useState(asset.current_value);
   const [assetAmountOwed, setAssetAmountOwed] = useState(asset.amount_owed);
@@ -16,12 +17,13 @@ const EditAssetForm = ({ assetEditForm, setAssetEditForm, asset }) => {
   const submitEvent = (e) => {
     e.preventDefault()
     let assetUpdate = {
-      user_id: userId,
-      asset_description: assetDescription,
-      asset_current_value: assetCurrentValue,
-      asset_amount_owed: assetAmountOwed,
-      asset_interest_rate: assetInterestRate,
-      asset_due_date: assetDueDate
+      id: id,
+      userId: userId,
+      description: assetDescription,
+      current_value: assetCurrentValue,
+      amount_owed: assetAmountOwed,
+      interest_rate: assetInterestRate,
+      due_date: assetDueDate
     }
     dispatch(editUserAsset(assetUpdate))
     setAssetEditForm(false)
@@ -49,7 +51,7 @@ const EditAssetForm = ({ assetEditForm, setAssetEditForm, asset }) => {
           name="assetCurrentValue"
           type="number"
           value={assetCurrentValue}
-          onChange={(e) => setAssetAmountOwed(e.target.value)}
+          onChange={(e) => setAssetCurrentValue(e.target.value)}
         />
       </div>
       <div>
@@ -58,7 +60,7 @@ const EditAssetForm = ({ assetEditForm, setAssetEditForm, asset }) => {
           name="assetAmountOwed"
           type="number"
           value={assetAmountOwed}
-          onChange={(e) => setAssetCurrentValue(e.target.value)}
+          onChange={(e) => setAssetAmountOwed(e.target.value)}
         />
       </div>
       <div>

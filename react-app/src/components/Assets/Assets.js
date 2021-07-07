@@ -49,9 +49,9 @@ const Assets = () => {
 
   return (
     <div className={styles.assets__wrapper}>
-      <h1>Your Assets</h1>
-      <h2>Assets Current Value: {assetsTotal()}</h2>
-      <h2>Amount Owed: {assetsOwed()}</h2>
+      <h1>Assets</h1>
+      <h2>Assets Value: ${assetsTotal()}</h2>
+      <h2>Amount Owed: ${assetsOwed()}</h2>
       <div onClick={(e) => setAssetAddForm(true)} className={styles.add_asset}>
         <h2>+</h2>
       </div>
@@ -70,7 +70,7 @@ const Assets = () => {
             {assets.map((asset) => (
               <tr onClick={(e) => setAsset(asset)} onDoubleClick={(e) => setAssetEditForm(asset)} key={asset.id}>
                 <td>{asset.asset_description}</td>
-                <td>{asset.current_value}</td>
+                <td>${asset.current_value}</td>
                 <td>{asset.amount_owed}</td>
                 <td>{asset.interest_rate}%</td>
                 <td>{asset.due_date}<button onClick={(e) => deleteAsset(asset.id)}>X</button></td>

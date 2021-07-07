@@ -46,8 +46,8 @@ const CreditCards = () => {
 
   return (
     <div className={styles.creditCards__wrapper}>
-      <h1>Your CreditCards</h1>
-      <h2>CreditCards Current Value: ${creditCardsTotal()}</h2>
+      <h1>Credit Cards</h1>
+      <h2>Credit Card Debt: ${creditCardsTotal()}</h2>
       <h2>Credit Utilization: {utilization()}%</h2>
       <div onClick={(e) => setCreditCardAddForm(true)} className={styles.add_creditCard}>
         <h2>+</h2>
@@ -67,7 +67,7 @@ const CreditCards = () => {
             {creditCards.map((creditCard) => (
               <tr onClick={(e) => setCreditCard(creditCard)} onDoubleClick={(e) => setCreditCardEditForm(creditCard)} key={creditCard.id}>
                 <td>{creditCard.account_name}</td>
-                <td>{creditCard.current_balance}</td>
+                <td>${creditCard.current_balance}</td>
                 <td>{creditCard.interest_rate}%</td>
                 <td>{creditCard.limit}</td>
                 <td>{creditCard.due_date}<button onClick={(e) => deleteCreditCard(creditCard.id)}>X</button></td>

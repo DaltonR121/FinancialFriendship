@@ -28,7 +28,7 @@ def assets(id):
 @asset_routes.route('/edit', methods=['PATCH'])
 def edit_asset():
   current_asset = Asset.query.filter(Asset.id == request.json['id']).first()
-  current_asset.asset_description = request.json['asset_description']
+  current_asset.asset_description = request.json['description']
   current_asset.current_value = request.json['current_value']
   current_asset.amount_owed = request.json['amount_owed']
   current_asset.interest_rate = request.json['interest_rate']

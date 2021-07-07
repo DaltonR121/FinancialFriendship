@@ -44,8 +44,8 @@ const Accounts = () => {
 
   return (
     <div className={styles.accounts__wrapper}>
-      <h1>Your Accounts</h1>
-      <h2>Accounts Total: {accountsTotal()}</h2>
+      <h1>Accounts</h1>
+      <h2>Accounts Total: ${accountsTotal()}</h2>
       <div onClick={(e) => setAccountAddForm(true)} className={styles.add_account}>
         <h2>+</h2>
       </div>
@@ -63,7 +63,7 @@ const Accounts = () => {
               <tr onClick={(e) => setAccount(account)} onDoubleClick={(e) => setAccountEditForm(account)} key={account.id}>
                 <td>{account.account_name}</td>
                 <td>{account.account_type}</td>
-                <td>{account.balance}<button onClick={(e) => deleteAccount(account.id)}>X</button></td>
+                <td>${account.balance}<button onClick={(e) => deleteAccount(account.id)}>X</button></td>
               </tr>
             ))}
           </tbody>

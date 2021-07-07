@@ -33,8 +33,8 @@ const MonthlyReoccurrings = () => {
 
   return (
     <div className={styles.monthlyReoccurrings__wrapper}>
-      <h1>Your MonthlyReoccurrings</h1>
-      <h2>MonthlyReoccurrings Total: ${monthlyReoccurringsTotal()}</h2>
+      <h1>Monthly Reoccurring</h1>
+      <h2>Total: ${monthlyReoccurringsTotal()}</h2>
       <div onClick={(e) => setMonthlyReoccurringAddForm(true)} className={styles.add_monthlyReoccurring}>
         <h2>+</h2>
       </div>

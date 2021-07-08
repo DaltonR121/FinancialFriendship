@@ -12,5 +12,5 @@ def seed_creditCards():
   db.session.commit()
 
 def undo_creditCards():
-  db.session.execute("TRUNCATE creditCards RESTART IDENTITY CASCADE;")
+  db.session.execute("TRUNCATE credit_cards RESTART IDENTITY CASCADE;")
   db.session.commit()

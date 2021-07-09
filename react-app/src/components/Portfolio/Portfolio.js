@@ -5,7 +5,9 @@ import { getUserAsset } from '../../store/assets';
 import { getCreditCards } from '../../store/creditCards';
 import { getUserMonthlyReoccurring } from '../../store/monthlyReoccurrings';
 import { getUserOtherObligation } from '../../store/otherObligations';
-import PiChart from './PieChart';
+import AssetsChart from './AssetsChart';
+import DebtChart from './DebtChart';
+import ExpensesChart from './ExpensesChart';
 import styles from './Portfolio.module.css';
 
 const Portfolio = () => {
@@ -43,6 +45,8 @@ const Portfolio = () => {
     return total;
   }
 
+  console.log(totalLiabilites())
+
   const netWorth = () => {
     return totalAssets() - totalLiabilites();
   }
@@ -57,12 +61,19 @@ const Portfolio = () => {
 
   return(
     <div className={styles.portfolio_wrapper}>
-      <h1>Portfolio</h1>
-      <h2>Net Worth: ${netWorth()}</h2>
-      <div className={styles.expense_breakdown}>
-        <h2>Expense Breakdown</h2>
+      <div className={styles.portfolio_header}>
+        <h1>Portfolio</h1>
+        <h2>Net Worth: ${netWorth()}</h2>
+      </div>
+      <div className={styles.charts_wrapper}>
         <div className={styles.pieChartWrapper}>
-            <PiChart monthlyReoccurrings={monthlyReoccurrings}/>
+            <AssetsChart accounts={accounts} assets={assets} />
+        </div>
+        <div className={styles.pieChartWrapper}>
+            <ExpensesChart monthlyReoccurrings={monthlyReoccurrings} />
+        </div>
+        <div className={styles.pieChartWrapper}>
+            <DebtChart assets={assets} creditCards={creditCards} otherObligations={otherObligations} />
         </div>
       </div>
     </div>

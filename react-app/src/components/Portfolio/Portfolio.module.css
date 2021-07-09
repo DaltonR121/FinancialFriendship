@@ -1,3 +1,15 @@
+.portfolio_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.expense_breakdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .pieChartWrapper {
   width: 500px;
 }

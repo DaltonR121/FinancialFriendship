@@ -56,18 +56,16 @@ const Portfolio = () => {
   }, [])
 
   return(
-    <>
-    <h1>Net Worth: ${netWorth()}</h1>
-    <div className={styles.pieChartWrapper}>
-      <PiChart 
-        accounts = {accounts} 
-        assets = {assets} 
-        creditCards = {creditCards}
-        monthlyReoccurrings = {monthlyReoccurrings}
-        otherObligations = {otherObligations}
-      />
+    <div className={styles.portfolio_wrapper}>
+      <h1>Portfolio</h1>
+      <h2>Net Worth: ${netWorth()}</h2>
+      <div className={styles.expense_breakdown}>
+        <h2>Expense Breakdown</h2>
+        <div className={styles.pieChartWrapper}>
+            <PiChart monthlyReoccurrings={monthlyReoccurrings}/>
+        </div>
+      </div>
     </div>
-    </>
   ); 
 }
 

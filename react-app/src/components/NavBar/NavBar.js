@@ -100,11 +100,6 @@ const NavBar = () => {
               Other Obligations
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/goals" exact={true} activeClassName={styles.active}>
-              Goals
-            </NavLink>
-          </li>
         </div>
       ) : null}
     </>

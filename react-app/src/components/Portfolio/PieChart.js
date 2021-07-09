@@ -1,23 +1,57 @@
+import { defaults } from 'chart.js';
 import React, { useEffect, useState } from 'react';
-import { PieChart } from 'react-minimal-pie-chart';
+import { Doughnut } from 'react-chartjs-2'
 import styles from './Portfolio.module.css';
 
-const PiChart = ({ accounts, assets, creditCards, monthlyReoccurrings, otherObligations }) => {
+defaults.legend = 'bottom';
+
+const PiChart = ({ monthlyReoccurrings }) => {
+
+  let bills = []
+  let billNames = []
+  monthlyReoccurrings.map((bill, i) => {
+    bills.push(bill.amount);
+    billNames.push(bill.account_description)
+  })
+
+  const data = {
+    labels: billNames,
+    datasets: [
+      {
+        label: 'Expense Breakdown',
+        data: bills,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const options = {
+    plugins: {
+      legend: {
+        position: 'bottom'
+      }
+    }
+  }
 
   return (
     <>
-      <h1>Expense Breakdown</h1>
-      <PieChart
-        data={[
-          // monthlyReoccurrings.map(bill => (
-          //   { title: bill.account_description, value: bill.amount, color: '#E38627'}
-          // ))
-          { title: 'One', value: 20, color: '#E38627' },
-          { title: 'Two', value: 15, color: '#C13C37' },
-          { title: 'Three', value: 20, color: '#6A2135' },
-        ]}
-
-      />
+      <Doughnut data={data} options={options} />
     </>
   )
 }

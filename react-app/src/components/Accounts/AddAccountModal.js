@@ -1,8 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+import { useDispatch, useSelector } from 'react-redux';
 import { createUserAccount } from '../../store/accounts';
+import styles from './Accounts.module.css'
 
-const AddAccountForm = ({ setAccountAddForm }) => {
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    opacity: '1'
+  }
+};
+
+function AddAccountModal({ accountAddModal, setAccountAddModal }) {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [accountName, setAccountName] = useState("");
@@ -20,17 +35,31 @@ const AddAccountForm = ({ setAccountAddForm }) => {
       balance
     }
     dispatch(createUserAccount(account))
-    setAccountAddForm(false)
+    setAccountAddModal(false)
+  }
+
+  function closeModal() {
+    setAccountAddModal(false);
   }
 
   return (
-    <form onSubmit={submitEvent}>
+    <div>
+      <Modal
+        isOpen={accountAddModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+        ariaHideApp={false}
+        >
+        <div className={styles.modal_wrapper}>
+          <h1>Add Account</h1>
+          <form onSubmit={submitEvent}>
       <div>
         {errors.map((error) => (
           <div>{error}</div>
         ))}
       </div>
-      <div>
+      <div className={styles.input_wrapper}>
         <label htmlFor="accountName">Account Name:</label>
         <input
           name="accountName"
@@ -39,7 +68,7 @@ const AddAccountForm = ({ setAccountAddForm }) => {
           onChange={(e) => setAccountName(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.input_wrapper}>
         <label htmlFor="accountType">Account Type:</label>
           <select onChange={(e) => setAccountType(e.target.value)} name="accountType">
             <option value="Checking">Checking</option>
@@ -47,7 +76,7 @@ const AddAccountForm = ({ setAccountAddForm }) => {
             <option value="Retirement">Retirement</option>
           </select>
       </div>
-      <div>
+      <div className={styles.input_wrapper}>
         <label htmlFor="balance">Balance:</label>
         <input
           name="balance"
@@ -58,10 +87,13 @@ const AddAccountForm = ({ setAccountAddForm }) => {
       </div>
       <div>
         <button type="submit">Add</button>
-        <button onClick={(e) => setAccountAddForm(false)}>Cancel</button>
+        <button onClick={(e) => setAccountAddModal(false)}>Cancel</button>
       </div>
     </form>
+        </div>
+      </Modal>
+    </div>
   );
-};
+}
 
-export default AddAccountForm;
+export default AddAccountModal;

@@ -1,8 +1,22 @@
 import React, { useEffect, useState } from "react";
+import Modal from 'react-modal';
 import { useDispatch, useSelector } from "react-redux";
-import { editUserAccount } from '../../store/accounts';
+import { editUserAccount, deleteUserAccount } from '../../store/accounts';
+import styles from './Accounts.module.css'
 
-const EditAccountForm = ({ setAccountEditForm, account }) => {
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    opacity: '1'
+  }
+};
+
+const EditAccountModal = ({ accountEditModal, setAccountEditModal, account }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [accountName, setAccountName] = useState(account.account_name);
@@ -21,10 +35,24 @@ const EditAccountForm = ({ setAccountEditForm, account }) => {
       balance
     }
     dispatch(editUserAccount(accountUpdate))
-    setAccountEditForm(false)
+    setAccountEditModal(false)
+  }
+
+  function closeModal() {
+    setAccountEditModal(false);
   }
 
   return (
+    <>
+    <Modal
+        isOpen={accountEditModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+        ariaHideApp={false}
+        >
+        <div className={styles.modal_wrapper}>
+          <h1>Edit Account</h1>
     <form onSubmit={submitEvent}>
       <div>
         {errors.map((error) => (
@@ -59,10 +87,14 @@ const EditAccountForm = ({ setAccountEditForm, account }) => {
       </div>
       <div>
         <button type="submit">Save</button>
-        <button onClick={(e) => setAccountEditForm(false)}>Cancel</button>
+        <button onClick={(e) => setAccountEditModal(false)}>Cancel</button>
+        <button onClick={(e) => dispatch(deleteUserAccount(account.id))}>Delete</button>
       </div>
     </form>
+    </div>
+    </Modal>
+    </>
   );
 };
 
-export default EditAccountForm;
+export default EditAccountModal;

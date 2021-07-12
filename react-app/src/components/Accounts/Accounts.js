@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAccount, deleteUserAccount } from '../../store/accounts'
-import AddAccountForm from './AddAccountForm';
-import EditAccountForm from './EditAccountForm'
+import EditAccountModal from './EditAccountModal'
+import AddAccountModal from './AddAccountModal';
 import styles from './Accounts.module.css'
 
 const Accounts = () => {
   const dispatch = useDispatch();
   
-  const [accountAddForm, setAccountAddForm] = useState(false);
-  const [accountEditForm, setAccountEditForm] = useState(false);
+  const [accountAddModal, setAccountAddModal] = useState(false);
+  const [accountEditModal, setAccountEditModal] = useState(false);
   const [account, setAccount] = useState();
 
   const userId = useSelector((state) => state.session.user.id);
@@ -31,7 +31,7 @@ const Accounts = () => {
     <div className={styles.accounts__wrapper}>
       <h1>Accounts</h1>
       <h2>Accounts Total: ${accountsTotal()}</h2>
-      <div onClick={(e) => setAccountAddForm(true)} className={styles.add_account}>
+      <div onClick={(e) => setAccountAddModal(true)} className={styles.add_account}>
         <h2>+</h2>
       </div>
       <div className={styles.accounts_table_wrapper}>
@@ -45,10 +45,10 @@ const Accounts = () => {
           </thead>
           <tbody>
             {accounts.map((account) => (
-              <tr onClick={(e) => setAccount(account)} onDoubleClick={(e) => setAccountEditForm(account)} key={account.id}>
+              <tr onClick={(e) => setAccount(account)} onDoubleClick={(e) => setAccountEditModal(account)} key={account.id}>
                 <td>{account.account_name}</td>
                 <td>{account.account_type}</td>
-                <td>${account.balance}<button onClick={(e) => dispatch(deleteUserAccount(account.id))}>X</button></td>
+                <td>${account.balance}</td>
               </tr>
             ))}
           </tbody>
@@ -57,16 +57,8 @@ const Accounts = () => {
       <div className={styles.table_footer}>
         <p>* Please DOUBLE-CLICK on any row you would like to make changes to!</p>
       </div>
-      {accountAddForm ? (
-        <div className={styles.add_account_form_wrapper}>
-          <AddAccountForm setAccountAddForm={setAccountAddForm} />
-        </div>
-      ) : null}
-      {accountEditForm ? (
-        <div className={styles.add_account_form_wrapper}>
-          <EditAccountForm setAccountEditForm={setAccountEditForm} account={account} />
-        </div>
-      ) : null}
+      {accountAddModal && <AddAccountModal accountAddModal={accountAddModal} setAccountAddModal={setAccountAddModal} />}
+      {accountEditModal && <EditAccountModal accountEditModal={accountEditModal} setAccountEditModal={setAccountEditModal} account={account} />}
     </div>
   );
 }

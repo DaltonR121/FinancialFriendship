@@ -5,6 +5,7 @@ import { getUserAsset } from '../../store/assets';
 import { getCreditCards } from '../../store/creditCards';
 import { getUserMonthlyReoccurring } from '../../store/monthlyReoccurrings';
 import { getUserOtherObligation } from '../../store/otherObligations';
+import { useEditProfile } from '../context/EditProfileContext';
 import AssetsChart from './AssetsChart';
 import DebtChart from './DebtChart';
 import ExpensesChart from './ExpensesChart';
@@ -12,6 +13,8 @@ import styles from './Portfolio.module.css';
 
 const Portfolio = () => {
   const dispatch = useDispatch();
+
+  const { modalOpen, setModalOpen } = useEditProfile()
 
   const userId = useSelector((state) => state.session.user.id);
   const accounts = useSelector((state) => Object.values(state.accounts));
@@ -65,6 +68,7 @@ const Portfolio = () => {
         <h1>Portfolio</h1>
         <h2>Net Worth: ${netWorth()}</h2>
       </div>
+      {modalOpen ? null : (
       <div className={styles.charts_wrapper}>
         <div className={styles.pieChartWrapper}>
             <AssetsChart className={styles.chart} accounts={accounts} assets={assets} />
@@ -76,6 +80,7 @@ const Portfolio = () => {
             <DebtChart className={styles.chart} assets={assets} creditCards={creditCards} otherObligations={otherObligations} />
         </div>
       </div>
+      )}
     </div>
   ); 
 }

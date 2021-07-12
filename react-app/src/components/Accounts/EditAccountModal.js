@@ -59,7 +59,7 @@ const EditAccountModal = ({ accountEditModal, setAccountEditModal, account }) =>
           <div>{error}</div>
         ))}
       </div>
-      <div>
+      <div className={styles.modal_input}>
         <label htmlFor="accountName">Account Name:</label>
         <input
           name="accountName"
@@ -68,7 +68,7 @@ const EditAccountModal = ({ accountEditModal, setAccountEditModal, account }) =>
           onChange={(e) => setAccountName(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.modal_input}>
         <label htmlFor="accountType">Account Type:</label>
           <select value={accountType} onChange={(e) => setAccountType(e.target.value)} name="accountType">
             <option value="Checking">Checking</option>
@@ -76,7 +76,7 @@ const EditAccountModal = ({ accountEditModal, setAccountEditModal, account }) =>
             <option value="Retirement">Retirement</option>
           </select>
       </div>
-      <div>
+      <div className={styles.modal_input}>
         <label htmlFor="balance">Balance:</label>
         <input
           name="balance"
@@ -85,10 +85,10 @@ const EditAccountModal = ({ accountEditModal, setAccountEditModal, account }) =>
           onChange={(e) => setBalance(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.modal_buttons}>
         <button type="submit">Save</button>
         <button onClick={(e) => setAccountEditModal(false)}>Cancel</button>
-        <button onClick={(e) => dispatch(deleteUserAccount(account.id))}>Delete</button>
+        <button id={styles.delete_button} onClick={(e) => dispatch(deleteUserAccount(account.id))}>Delete</button>
       </div>
     </form>
     </div>

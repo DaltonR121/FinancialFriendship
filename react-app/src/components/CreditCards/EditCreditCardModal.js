@@ -64,7 +64,7 @@ const EditCreditCardModal = ({ creditCardEditModal, setCreditCardEditModal, cred
                 <div>{error}</div>
               ))}
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="creditCardName">Card Name:</label>
               <input
                 name="creditCardName"
@@ -73,7 +73,7 @@ const EditCreditCardModal = ({ creditCardEditModal, setCreditCardEditModal, cred
                 onChange={(e) => setAccountName(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="currentBalance">Balance:</label>
               <input
                 name="currentBalance"
@@ -82,7 +82,7 @@ const EditCreditCardModal = ({ creditCardEditModal, setCreditCardEditModal, cred
                 onChange={(e) => setCurrentBalance(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="interestRate">Interest Rate:</label>
               <input
                 name="interestRate"
@@ -91,7 +91,7 @@ const EditCreditCardModal = ({ creditCardEditModal, setCreditCardEditModal, cred
                 onChange={(e) => setInterestRate(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="limit">Limit:</label>
               <input
                 name="limit"
@@ -100,7 +100,7 @@ const EditCreditCardModal = ({ creditCardEditModal, setCreditCardEditModal, cred
                 onChange={(e) => setLimit(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="dueDate">Due Date:</label>
               <input
                 name="dueDate"
@@ -109,12 +109,17 @@ const EditCreditCardModal = ({ creditCardEditModal, setCreditCardEditModal, cred
                 onChange={(e) => setDueDate(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_buttons}>
               <button type="submit">Edit</button>
               <button onClick={(e) => setCreditCardEditModal(false)}>
                 Cancel
               </button>
-              <button onClick={(e) => dispatch(deleteUserCreditCard(creditCard.id))}>Delete</button>
+              <button
+                id={styles.delete_button}
+                onClick={(e) => dispatch(deleteUserCreditCard(creditCard.id))}
+              >
+                Delete
+              </button>
             </div>
           </form>
         </div>

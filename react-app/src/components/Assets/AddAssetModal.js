@@ -62,7 +62,7 @@ const AddAssetForm = ({ assetAddModal, setAssetAddModal }) => {
                 <div>{error}</div>
               ))}
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="assetDescription">Asset Description:</label>
               <input
                 name="assetDescription"
@@ -71,7 +71,7 @@ const AddAssetForm = ({ assetAddModal, setAssetAddModal }) => {
                 onChange={(e) => setAssetDescription(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="assetCurrentValue">Current Value:</label>
               <input
                 name="assetCurrentValue"
@@ -80,7 +80,7 @@ const AddAssetForm = ({ assetAddModal, setAssetAddModal }) => {
                 onChange={(e) => setAssetCurrentValue(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="assetAmountOwed">Amount Owed:</label>
               <input
                 name="assetAmountOwed"
@@ -89,7 +89,7 @@ const AddAssetForm = ({ assetAddModal, setAssetAddModal }) => {
                 onChange={(e) => setAssetAmountOwed(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="assetInterestRate">Interest Rate:</label>
               <input
                 name="assetInterestRate"
@@ -98,7 +98,7 @@ const AddAssetForm = ({ assetAddModal, setAssetAddModal }) => {
                 onChange={(e) => setAssetInterestRate(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="dueDate">Due Date:</label>
               <input
                 name="dueDate"
@@ -107,7 +107,7 @@ const AddAssetForm = ({ assetAddModal, setAssetAddModal }) => {
                 onChange={(e) => setAssetDueDate(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_buttons}>
               <button type="submit">Add</button>
               <button onClick={(e) => setAssetAddModal(false)}>Cancel</button>
             </div>

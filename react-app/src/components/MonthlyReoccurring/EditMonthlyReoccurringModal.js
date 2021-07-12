@@ -60,7 +60,7 @@ const EditMonthlyReoccurringModal = ({ monthlyReoccurringEditModal, setMonthlyRe
                 <div>{error}</div>
               ))}
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="description">Description:</label>
               <input
                 name="description"
@@ -69,7 +69,7 @@ const EditMonthlyReoccurringModal = ({ monthlyReoccurringEditModal, setMonthlyRe
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="balance">Amount:</label>
               <input
                 name="balance"
@@ -78,7 +78,7 @@ const EditMonthlyReoccurringModal = ({ monthlyReoccurringEditModal, setMonthlyRe
                 onChange={(e) => setBalance(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="dueDate">Due Date:</label>
               <input
                 name="dueDate"
@@ -87,12 +87,12 @@ const EditMonthlyReoccurringModal = ({ monthlyReoccurringEditModal, setMonthlyRe
                 onChange={(e) => setDueDate(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_buttons}>
               <button type="submit">Edit</button>
               <button onClick={(e) => setMonthlyReoccurringEditModal(false)}>
                 Cancel
               </button>
-              <button
+              <button id={styles.delete_button}
                 onClick={(e) =>
                   dispatch(deleteUserMonthlyReoccurring(monthlyReoccurring.id))
                 }

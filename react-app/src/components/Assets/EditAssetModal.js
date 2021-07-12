@@ -70,7 +70,7 @@ const EditAssetModal = ({ assetEditModal, setAssetEditModal, asset }) => {
                 <div>{error}</div>
               ))}
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="assetDescription">Asset Description:</label>
               <input
                 name="assetDescription"
@@ -79,7 +79,7 @@ const EditAssetModal = ({ assetEditModal, setAssetEditModal, asset }) => {
                 onChange={(e) => setAssetDescription(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="assetCurrentValue">Current Value:</label>
               <input
                 name="assetCurrentValue"
@@ -88,7 +88,7 @@ const EditAssetModal = ({ assetEditModal, setAssetEditModal, asset }) => {
                 onChange={(e) => setAssetCurrentValue(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="assetAmountOwed">Amount Owed:</label>
               <input
                 name="assetAmountOwed"
@@ -97,7 +97,7 @@ const EditAssetModal = ({ assetEditModal, setAssetEditModal, asset }) => {
                 onChange={(e) => setAssetAmountOwed(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="assetInterestRate">Interest Rate:</label>
               <input
                 name="assetInterestRate"
@@ -106,7 +106,7 @@ const EditAssetModal = ({ assetEditModal, setAssetEditModal, asset }) => {
                 onChange={(e) => setAssetInterestRate(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="dueDate">Due Date:</label>
               <input
                 name="dueDate"
@@ -115,11 +115,14 @@ const EditAssetModal = ({ assetEditModal, setAssetEditModal, asset }) => {
                 onChange={(e) => setAssetDueDate(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_buttons}>
               <button type="submit">Save</button>
               <button onClick={(e) => setAssetEditModal(false)}>Cancel</button>
-              <button onClick={(e) => dispatch(deleteUserAsset(asset.id))}>
-                X
+              <button
+                id={styles.delete_button}
+                onClick={(e) => dispatch(deleteUserAsset(asset.id))}
+              >
+                Delete
               </button>
             </div>
           </form>

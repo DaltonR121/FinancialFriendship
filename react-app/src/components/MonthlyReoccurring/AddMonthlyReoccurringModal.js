@@ -58,7 +58,7 @@ const AddMonthlyReoccurringModal = ({ monthlyReoccurringAddModal, setMonthlyReoc
           <div>{error}</div>
         ))}
       </div>
-      <div>
+      <div className={styles.modal_input}>
         <label htmlFor="description">Description:</label>
         <input
           name="description"
@@ -67,7 +67,7 @@ const AddMonthlyReoccurringModal = ({ monthlyReoccurringAddModal, setMonthlyReoc
           onChange={(e) => setDescription(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.modal_input}>
         <label htmlFor="amount">Amount:</label>
         <input
           name="amount"
@@ -76,7 +76,7 @@ const AddMonthlyReoccurringModal = ({ monthlyReoccurringAddModal, setMonthlyReoc
           onChange={(e) => setBalance(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.modal_input}>
         <label htmlFor="dueDate">Due Date:</label>
         <input
           name="dueDate"
@@ -85,7 +85,7 @@ const AddMonthlyReoccurringModal = ({ monthlyReoccurringAddModal, setMonthlyReoc
           onChange={(e) => setDueDate(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.modal_buttons}>
         <button type="submit">Add</button>
         <button onClick={(e) => setMonthlyReoccurringAddModal(false)}>Cancel</button>
       </div>

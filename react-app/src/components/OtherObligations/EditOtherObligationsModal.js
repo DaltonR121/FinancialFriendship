@@ -60,7 +60,7 @@ const EditOtherObligationModal = ({ otherObligationEditModal, setOtherObligation
                 <div>{error}</div>
               ))}
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="otherObligationDescription">
                 OtherObligation Name:
               </label>
@@ -71,7 +71,7 @@ const EditOtherObligationModal = ({ otherObligationEditModal, setOtherObligation
                 onChange={(e) => setOtherObligationDescription(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="balance">Current Balance:</label>
               <input
                 name="balance"
@@ -80,7 +80,7 @@ const EditOtherObligationModal = ({ otherObligationEditModal, setOtherObligation
                 onChange={(e) => setOtherObligationBalance(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_input}>
               <label htmlFor="dueDate">Due Date:</label>
               <input
                 name="dueDate"
@@ -89,12 +89,12 @@ const EditOtherObligationModal = ({ otherObligationEditModal, setOtherObligation
                 onChange={(e) => setOtherObligationDueDate(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.modal_buttons}>
               <button type="submit">Edit</button>
               <button onClick={(e) => setOtherObligationEditModal(false)}>
                 Cancel
               </button>
-              <button
+              <button id={styles.delete_button}
                 onClick={(e) =>
                   dispatch(deleteUserOtherObligation(otherObligation.id))
                 }

@@ -58,7 +58,7 @@ function AddAccountModal({ accountAddModal, setAccountAddModal }) {
           <div>{error}</div>
         ))}
       </div>
-      <div className={styles.input_wrapper}>
+      <div className={styles.modal_input}>
         <label htmlFor="accountName">Account Name:</label>
         <input
           name="accountName"
@@ -67,7 +67,7 @@ function AddAccountModal({ accountAddModal, setAccountAddModal }) {
           onChange={(e) => setAccountName(e.target.value)}
         />
       </div>
-      <div className={styles.input_wrapper}>
+      <div className={styles.modal_input}>
         <label htmlFor="accountType">Account Type:</label>
           <select onChange={(e) => setAccountType(e.target.value)} name="accountType">
             <option value="Checking">Checking</option>
@@ -75,7 +75,7 @@ function AddAccountModal({ accountAddModal, setAccountAddModal }) {
             <option value="Retirement">Retirement</option>
           </select>
       </div>
-      <div className={styles.input_wrapper}>
+      <div className={styles.modal_input}>
         <label htmlFor="balance">Balance:</label>
         <input
           name="balance"
@@ -84,7 +84,7 @@ function AddAccountModal({ accountAddModal, setAccountAddModal }) {
           onChange={(e) => setBalance(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.modal_buttons}>
         <button type="submit">Add</button>
         <button onClick={(e) => setAccountAddModal(false)}>Cancel</button>
       </div>

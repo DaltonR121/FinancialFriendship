@@ -1,0 +1,27 @@
+.modal_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal_wrapper h1 {
+  margin: 10px;
+}
+
+.modal_wrapper label {
+  font-weight: bold;
+}
+
+.modal_wrapper button {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: 0 15px;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.input_field {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+}

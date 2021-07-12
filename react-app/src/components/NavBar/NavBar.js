@@ -7,12 +7,14 @@ import styles from './NavBar.module.css'
 import { useEditProfile } from '../context/EditProfileContext';
 import EditProfileModal from '../EditProfileModal/EditProfileModal';
 import LoginModal from '../LoginModal/LoginModal';
+import SignupModal from '../../SignupModal/SignupModal';
 
 const NavBar = () => {
   const dispatch = useDispatch();
 
   const { modalOpen, setModalOpen } = useEditProfile()
   const [loginModal, setLoginModal] = useState(false);
+  const [signupModal, setSignupModal] = useState(false);
   
   const sessionUser = useSelector((state) => state.session.user);
   let setLinks;
@@ -48,9 +50,9 @@ const NavBar = () => {
           </a>
         </li>
         <li>
-          <NavLink to="/sign-up" exact={true} activeClassName={styles.active}>
-            Sign Up
-          </NavLink>
+        <a onClick={() => setSignupModal(true)}>
+            Signup
+          </a>
         </li>
       </ul>
     </nav>
@@ -110,6 +112,7 @@ const NavBar = () => {
       ) : null}
       {modalOpen && <EditProfileModal />}
       {loginModal && <LoginModal loginModal={loginModal} setLoginModal={setLoginModal} />}
+      {signupModal && <SignupModal signupModal={signupModal} setSignupModal={setSignupModal} /> }
     </>
   );
 }

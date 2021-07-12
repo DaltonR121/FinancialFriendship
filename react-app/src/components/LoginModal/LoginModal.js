@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEditProfile } from '../context/EditProfileContext';
 import { editProfile } from '../../store/session' 
 import styles from './LoginModal.module.css'
 import { Redirect } from "react-router-dom";
@@ -52,22 +51,9 @@ function LoginModal({loginModal, setLoginModal}) {
   if (user) {
     return <Redirect to="/portfolio" />;
   }
-  
-  function openModal() {
-    setLoginModal(true);
-  }
 
   function closeModal() {
     setLoginModal(false);
-  }
-
-  const submitEvent = (e) => {
-    e.preventDefault()
-    let userUpdate = {
-      id: user.id,
-    }
-    dispatch(editProfile(userUpdate))
-    setLoginModal(false)
   }
 
   return (

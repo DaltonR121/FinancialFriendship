@@ -11,6 +11,7 @@ import MonthlyReoccurrings from "./components/MonthlyReoccurring/MonthlyReoccurr
 import OtherObligations from "./components/OtherObligations/OtherObligations"
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
+import Footer from "./components/Footer/Footer";
 import User from "./components/User";
 import { authenticate } from "./store/session";
 
@@ -64,6 +65,7 @@ function App() {
           <OtherObligations />
         </ProtectedRoute>
       </Switch>
+      <Footer />
     </BrowserRouter>
     </>
   );

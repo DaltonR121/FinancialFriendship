@@ -63,7 +63,7 @@ const EditAssetModal = ({ assetEditModal, setAssetEditModal, asset }) => {
         ariaHideApp={false}
       >
         <div className={styles.modal_wrapper}>
-          <h1>Add Account</h1>
+          <h1>Edit Asset</h1>
           <form onSubmit={submitEvent}>
             <div>
               {errors.map((error) => (

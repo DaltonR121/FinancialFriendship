@@ -55,7 +55,7 @@ const AddAssetForm = ({ assetAddModal, setAssetAddModal }) => {
         ariaHideApp={false}
       >
         <div className={styles.modal_wrapper}>
-          <h1>Add Account</h1>
+          <h1>Add Asset</h1>
           <form onSubmit={submitEvent}>
             <div>
               {errors.map((error) => (

@@ -1,8 +1,22 @@
 import React, { useEffect, useState } from "react";
+import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
 import { createUserMonthlyReoccurring } from '../../store/monthlyReoccurrings';
+import styles from './MonthlyReoccurring.module.css'
 
-const AddMonthlyReoccurringForm = ({ setMonthlyReoccurringAddForm }) => {
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    opacity: "1",
+  },
+};
+
+const AddMonthlyReoccurringModal = ({ monthlyReoccurringAddModal, setMonthlyReoccurringAddModal }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [description, setDescription] = useState("");
@@ -20,10 +34,24 @@ const AddMonthlyReoccurringForm = ({ setMonthlyReoccurringAddForm }) => {
       due_date: dueDate
     }
     dispatch(createUserMonthlyReoccurring(monthlyReoccurring))
-    setMonthlyReoccurringAddForm(false)
+    setMonthlyReoccurringAddModal(false)
+  }
+
+  function closeModal() {
+    setMonthlyReoccurringAddModal(false);
   }
 
   return (
+    <div>
+    <Modal
+      isOpen={monthlyReoccurringAddModal}
+      onRequestClose={closeModal}
+      style={customStyles}
+      contentLabel="Example Modal"
+      ariaHideApp={false}
+    >
+      <div className={styles.modal_wrapper}>
+        <h1>Add Monthly Reoccurring</h1>
     <form onSubmit={submitEvent}>
       <div>
         {errors.map((error) => (
@@ -31,7 +59,7 @@ const AddMonthlyReoccurringForm = ({ setMonthlyReoccurringAddForm }) => {
         ))}
       </div>
       <div>
-        <label htmlFor="description">MonthlyReoccurring Name:</label>
+        <label htmlFor="description">Description:</label>
         <input
           name="description"
           type="text"
@@ -59,10 +87,13 @@ const AddMonthlyReoccurringForm = ({ setMonthlyReoccurringAddForm }) => {
       </div>
       <div>
         <button type="submit">Add</button>
-        <button onClick={(e) => setMonthlyReoccurringAddForm(false)}>Cancel</button>
+        <button onClick={(e) => setMonthlyReoccurringAddModal(false)}>Cancel</button>
       </div>
     </form>
+    </div>
+      </Modal>
+    </div>
   );
 };
 
-export default AddMonthlyReoccurringForm;
+export default AddMonthlyReoccurringModal;

@@ -114,7 +114,7 @@ const EditCreditCardModal = ({ creditCardEditModal, setCreditCardEditModal, cred
               <button onClick={(e) => setCreditCardEditModal(false)}>
                 Cancel
               </button>
-              <button onClick={(e) => dispatch(deleteUserCreditCard(creditCard.id))}>X</button>
+              <button onClick={(e) => dispatch(deleteUserCreditCard(creditCard.id))}>Delete</button>
             </div>
           </form>
         </div>

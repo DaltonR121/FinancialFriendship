@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserMonthlyReoccurring, deleteUserMonthlyReoccurring } from '../../store/monthlyReoccurrings'
-import AddMonthlyReoccurringForm from './AddMonthlyReoccurringForm';
-import EditMonthlyReoccurringForm from './EditMonthlyReoccurringForm'
+import { getUserMonthlyReoccurring } from '../../store/monthlyReoccurrings'
+import AddMonthlyReoccurringForm from './AddMonthlyReoccurringModal';
+import EditMonthlyReoccurringForm from './EditMonthlyReoccurringModal'
 import styles from './MonthlyReoccurring.module.css'
 
 const MonthlyReoccurrings = () => {
   const dispatch = useDispatch();
 
-  const [monthlyReoccurringAddForm, setMonthlyReoccurringAddForm] = useState(false);
-  const [monthlyReoccurringEditForm, setMonthlyReoccurringEditForm] = useState(false);
+  const [monthlyReoccurringAddModal, setMonthlyReoccurringAddModal] = useState(false);
+  const [monthlyReoccurringEditModal, setMonthlyReoccurringEditModal] = useState(false);
   const [monthlyReoccurring, setMonthlyReoccurring] = useState();
 
   const userId = useSelector((state) => state.session.user.id);
@@ -31,7 +31,7 @@ const MonthlyReoccurrings = () => {
     <div className={styles.monthlyReoccurrings__wrapper}>
       <h1>Monthly Reoccurring</h1>
       <h2>Total: ${monthlyReoccurringsTotal()}</h2>
-      <div onClick={(e) => setMonthlyReoccurringAddForm(true)} className={styles.add_monthlyReoccurring}>
+      <div onClick={(e) => setMonthlyReoccurringAddModal(true)} className={styles.add_monthlyReoccurring}>
         <h2>+</h2>
       </div>
       <div className={styles.monthlyReoccurrings_table_wrapper}>
@@ -45,10 +45,10 @@ const MonthlyReoccurrings = () => {
           </thead>
           <tbody>
             {monthlyReoccurrings.map((monthlyReoccurring) => (
-              <tr onClick={(e) => setMonthlyReoccurring(monthlyReoccurring)} onDoubleClick={(e) => setMonthlyReoccurringEditForm(monthlyReoccurring)} key={monthlyReoccurring.id}>
+              <tr onClick={(e) => setMonthlyReoccurring(monthlyReoccurring)} onDoubleClick={(e) => setMonthlyReoccurringEditModal(monthlyReoccurring)} key={monthlyReoccurring.id}>
                 <td>{monthlyReoccurring.account_description}</td>
                 <td>${monthlyReoccurring.amount}</td>
-                <td>{monthlyReoccurring.due_date}<button onClick={(e) => dispatch(deleteUserMonthlyReoccurring(monthlyReoccurring.id))}>X</button></td>
+                <td>{monthlyReoccurring.due_date}</td>
               </tr>
             ))}
           </tbody>
@@ -57,16 +57,8 @@ const MonthlyReoccurrings = () => {
       <div className={styles.table_footer}>
         <p>* Please DOUBLE-CLICK on any row you would like to make changes to!</p>
       </div>
-      {monthlyReoccurringAddForm ? (
-        <div className={styles.add_monthlyReoccurring_form_wrapper}>
-          <AddMonthlyReoccurringForm monthlyReoccurringAddForm={monthlyReoccurringAddForm} setMonthlyReoccurringAddForm={setMonthlyReoccurringAddForm} />
-        </div>
-      ) : null}
-      {monthlyReoccurringEditForm ? (
-        <div className={styles.add_monthlyReoccurring_form_wrapper}>
-          <EditMonthlyReoccurringForm setMonthlyReoccurringEditForm={setMonthlyReoccurringEditForm} monthlyReoccurring={monthlyReoccurring} />
-        </div>
-      ) : null}
+      {monthlyReoccurringAddModal && <AddMonthlyReoccurringForm monthlyReoccurringAddModal={monthlyReoccurringAddModal} setMonthlyReoccurringAddModal={setMonthlyReoccurringAddModal} />}
+      {monthlyReoccurringEditModal && <EditMonthlyReoccurringForm monthlyReoccurringEditModal={monthlyReoccurringEditModal} setMonthlyReoccurringEditModal={setMonthlyReoccurringEditModal} monthlyReoccurring={monthlyReoccurring} />}
     </div>
   );
 }

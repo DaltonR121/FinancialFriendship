@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserOtherObligation, deleteUserOtherObligation } from '../../store/otherObligations'
-import AddOtherObligationForm from './AddOtherObligationsForm';
-import EditOtherObligationForm from './EditOtherObligationsForm'
+import AddOtherObligationsModal from './AddOtherObligationsModal';
+import EditOtherObligationModalAddOtherObligationsModal from './EditOtherObligationsModal'
 import styles from './OtherObligations.module.css'
 
 const OtherObligations = () => {
   const dispatch = useDispatch();
 
-  const [otherObligationAddForm, setOtherObligationAddForm] = useState(false);
-  const [otherObligationEditForm, setOtherObligationEditForm] = useState(false);
+  const [otherObligationAddModal, setOtherObligationAddModal] = useState(false);
+  const [otherObligationEditModal, setOtherObligationEditModal] = useState(false);
   const [otherObligation, setOtherObligation] = useState();
 
   const userId = useSelector((state) => state.session.user.id);
@@ -31,7 +31,7 @@ const OtherObligations = () => {
     <div className={styles.otherObligations__wrapper}>
       <h1>Other Obligations</h1>
       <h2>Total: ${otherObligationsTotal()}</h2>
-      <div onClick={(e) => setOtherObligationAddForm(true)} className={styles.add_otherObligation}>
+      <div onClick={(e) => setOtherObligationAddModal(true)} className={styles.add_otherObligation}>
         <h2>+</h2>
       </div>
       <div className={styles.otherObligations_table_wrapper}>
@@ -45,10 +45,10 @@ const OtherObligations = () => {
           </thead>
           <tbody>
             {otherObligations.map((otherObligation) => (
-              <tr onClick={(e) => setOtherObligation(otherObligation)} onDoubleClick={(e) => setOtherObligationEditForm(otherObligation)} key={otherObligation.id}>
+              <tr onClick={(e) => setOtherObligation(otherObligation)} onDoubleClick={(e) => setOtherObligationEditModal(otherObligation)} key={otherObligation.id}>
                 <td>{otherObligation.account_description}</td>
                 <td>${otherObligation.current_balance}</td>
-                <td>{otherObligation.due_date}<button onClick={(e) => dispatch(deleteUserOtherObligation(otherObligation.id))}>X</button></td>
+                <td>{otherObligation.due_date}</td>
               </tr>
             ))}
           </tbody>
@@ -57,16 +57,8 @@ const OtherObligations = () => {
       <div className={styles.table_footer}>
         <p>* Please DOUBLE-CLICK on any row you would like to make changes to!</p>
       </div>
-      {otherObligationAddForm ? (
-        <div className={styles.add_otherObligation_form_wrapper}>
-          <AddOtherObligationForm otherObligationAddForm={otherObligationAddForm} setOtherObligationAddForm={setOtherObligationAddForm} />
-        </div>
-      ) : null}
-      {otherObligationEditForm ? (
-        <div className={styles.add_otherObligation_form_wrapper}>
-          <EditOtherObligationForm setOtherObligationEditForm={setOtherObligationEditForm} otherObligation={otherObligation} />
-        </div>
-      ) : null}
+      {otherObligationAddModal && <AddOtherObligationsModal otherObligationAddModal={otherObligationAddModal} setOtherObligationAddModal={setOtherObligationAddModal} />}
+      {otherObligationEditModal && <EditOtherObligationModalAddOtherObligationsModal otherObligationEditModal={otherObligationEditModal} setOtherObligationEditModal={setOtherObligationEditModal} otherObligation={otherObligation} />}
     </div>
   );
 }

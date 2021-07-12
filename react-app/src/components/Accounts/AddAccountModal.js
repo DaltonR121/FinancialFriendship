@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createUserAccount } from '../../store/accounts';
 import styles from './Accounts.module.css'
 
-
 const customStyles = {
   content: {
     top: '50%',

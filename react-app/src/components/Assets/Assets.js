@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAsset, deleteUserAsset } from '../../store/assets'
-import AddAssetForm from './AddAssetForm';
-import EditAssetForm from './EditAssetForm'
+import AddAssetModal from './AddAssetModal';
+import EditAssetModal from './EditAssetModal'
 import styles from './Assets.module.css'
 
 const Assets = () => {
   const dispatch = useDispatch();
 
-  const [assetAddForm, setAssetAddForm] = useState(false);
-  const [assetEditForm, setAssetEditForm] = useState(false);
+  const [assetAddModal, setAssetAddModal] = useState(false);
+  const [assetEditModal, setAssetEditModal] = useState(false);
   const [asset, setAsset] = useState();
 
   const userId = useSelector((state) => state.session.user.id);
@@ -40,7 +40,7 @@ const Assets = () => {
       <h1>Assets</h1>
       <h2>Assets Value: ${assetsTotal()}</h2>
       <h2>Amount Owed: ${assetsOwed()}</h2>
-      <div onClick={(e) => setAssetAddForm(true)} className={styles.add_asset}>
+      <div onClick={(e) => setAssetAddModal(true)} className={styles.add_asset}>
         <h2>+</h2>
       </div>
       <div className={styles.assets_table_wrapper}>
@@ -56,12 +56,12 @@ const Assets = () => {
           </thead>
           <tbody>
             {assets.map((asset) => (
-              <tr onClick={(e) => setAsset(asset)} onDoubleClick={(e) => setAssetEditForm(asset)} key={asset.id}>
+              <tr onClick={(e) => setAsset(asset)} onDoubleClick={(e) => setAssetEditModal(asset)} key={asset.id}>
                 <td>{asset.asset_description}</td>
                 <td>${asset.current_value}</td>
-                <td>{asset.amount_owed}</td>
+                <td>${asset.amount_owed}</td>
                 <td>{asset.interest_rate}%</td>
-                <td>{asset.due_date}<button onClick={(e) => dispatch(deleteUserAsset(asset.id))}>X</button></td>
+                <td>{asset.due_date}</td>
               </tr>
             ))}
           </tbody>
@@ -70,16 +70,8 @@ const Assets = () => {
       <div className={styles.table_footer}>
         <p>* Please DOUBLE-CLICK on any row you would like to make changes to!</p>
       </div>
-      {assetAddForm ? (
-        <div className={styles.add_asset_form_wrapper}>
-          <AddAssetForm assetAddForm={assetAddForm} setAssetAddForm={setAssetAddForm} />
-        </div>
-      ) : null}
-      {assetEditForm ? (
-        <div className={styles.add_asset_form_wrapper}>
-          <EditAssetForm setAssetEditForm={setAssetEditForm}asset={asset} />
-        </div>
-      ) : null}
+      {assetAddModal && <AddAssetModal assetAddModal={assetAddModal} setAssetAddModal={setAssetAddModal} />}
+      {assetEditModal && <EditAssetModal assetEditModal={assetEditModal} setAssetEditModal={setAssetEditModal} asset={asset} />}
     </div>
   );
 }

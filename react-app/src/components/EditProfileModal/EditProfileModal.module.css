@@ -1,36 +1,27 @@
-.test {
-  color: pink;
-}
-
 .modal_wrapper {
   display: flex;
   flex-direction: column;
-  height: 50px;
-  width: 50px;
-  z-index: 100000;
 }
 
-.ReactModal__Content--after-open {
-  height: 50px;
-  width: 50px;
-  opacity: 1;
+.modal_wrapper h1 {
+  margin: 10px;
 }
 
-.ReactModal__Content {
-  height: 50px;
-  width: 50px;
-  opacity: 1;
+.modal_wrapper label {
+  font-weight: bold;
 }
 
-.ReactModal__Body--open {
-  height: 50px;
-  width: 50px;
-  opacity: 1;
+.modal_wrapper button {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: 0 15px;
+  align-items: center;
+  margin-bottom: 5px;
 }
 
-.Modal {
-  height: 50px;
-  width: 50px;
-  opacity: 1;
-  z-index: 1;
+.input_field {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
 }

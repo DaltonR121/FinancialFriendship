@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEditProfile } from '../context/EditProfileContext';
+import { editProfile } from '../../store/session' 
 import styles from './EditProfileModal.module.css'
 
 const customStyles = {
@@ -13,10 +14,11 @@ const customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     opacity: '1'
-  },
+  }
 };
 
 function EditProfileModal() {
+  const dispatch = useDispatch()
   const { modalOpen, setModalOpen } = useEditProfile()
 
   const user = useSelector((state) => state.session.user);
@@ -41,23 +43,23 @@ function EditProfileModal() {
       email,
       income
     }
-    console.log(userUpdate)
-    // dispatch(editUserCreditCard(creditCardUpdate))
-    // setCreditCardEditForm(false)
+    dispatch(editProfile(userUpdate))
+    setModalOpen(false)
   }
 
   return (
-    <div className={styles.modal_wrapper}>
+    <div>
       <Modal
         isOpen={modalOpen}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
         ariaHideApp={false}
-      >
-        <div>
+        >
+        <div className={styles.modal_wrapper}>
+        <h1>Edit Profile</h1>
           <form onSubmit={submitEvent}>
-            <div>
+            <div className={styles.input_field}>
               <label htmlFor="username">Username:</label>
               <input
                 name="username"
@@ -66,7 +68,7 @@ function EditProfileModal() {
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.input_field}>
               <label htmlFor="email">Email:</label>
               <input
                 name="email"
@@ -75,7 +77,7 @@ function EditProfileModal() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div>
+            <div className={styles.input_field}>
               <label htmlFor="income">Income:</label>
               <input
                 name="income"
@@ -88,7 +90,7 @@ function EditProfileModal() {
               <button type="submit">Edit</button>
             </div>
           </form>
-          <button onClick={closeModal}>close</button>
+          <button onClick={closeModal}>Close</button>
         </div>
       </Modal>
     </div>

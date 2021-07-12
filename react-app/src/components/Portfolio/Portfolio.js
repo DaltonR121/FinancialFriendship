@@ -29,7 +29,7 @@ const Portfolio = () => {
       total += account.balance
     })
     assets.map(account => {
-      total += account.current_value
+      total += (account.current_value - account.amount_owed)
     })
     return total;
   }
@@ -39,16 +39,11 @@ const Portfolio = () => {
     creditCards.map(account => {
       total += account.current_balance
     })
-    monthlyReoccurrings.map(account => {
-      total += account.amount
-    })
     otherObligations.map(account => {
       total += account.current_balance
     })
     return total;
   }
-
-  console.log(totalLiabilites())
 
   const netWorth = () => {
     return totalAssets() - totalLiabilites();

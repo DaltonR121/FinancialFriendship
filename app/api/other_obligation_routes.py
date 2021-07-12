@@ -6,7 +6,6 @@ other_obligation_routes = Blueprint('other_obligations', __name__)
 
 @other_obligation_routes.route('/createOtherObligation', methods=['POST'])
 def createOtherObligation():
-  print(request.json)
   new_other_obligation = request.json
   other_obligation = OtherObligation(
     user_id = new_other_obligation['user_id'],

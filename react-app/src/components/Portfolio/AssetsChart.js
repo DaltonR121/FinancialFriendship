@@ -13,12 +13,13 @@ const AssetsChart = ({ accounts, assets }) => {
   accounts.map((account) => {
     assetNames.push(account.account_name);
     assetAmounts.push(account.balance)
+    assetsTotal += account.balance
   })
 
   assets.map((asset) => {
     let value = 0;
     assetNames.push(asset.asset_description);
-    value = asset.current_value - asset.amount_owed
+    value = asset.current_value
     assetAmounts.push(value)
     assetsTotal += value
   })

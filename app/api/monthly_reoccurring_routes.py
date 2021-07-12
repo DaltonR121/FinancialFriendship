@@ -6,7 +6,6 @@ monthly_reoccurring_routes = Blueprint('monthly_reoccurring', __name__)
 
 @monthly_reoccurring_routes.route('/createMonthlyReoccurring', methods=['POST'])
 def createMonthlyReoccurring():
-  print(request.json)
   new_other_obligation = request.json
   other_obligation = MonthlyReoccurring(
     user_id = new_other_obligation['user_id'],

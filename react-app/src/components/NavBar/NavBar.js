@@ -1,12 +1,16 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from "../../store/session";
 import github from '../../assets/GitHub-Mark-32px.png'
 import styles from './NavBar.module.css'
+import { useEditProfile } from '../context/EditProfileContext';
+import EditProfileModal from '../EditProfileModal/EditProfileModal';
 
 const NavBar = () => {
   const dispatch = useDispatch();
+
+  const { modalOpen, setModalOpen } = useEditProfile()
   
   const sessionUser = useSelector((state) => state.session.user);
   let setLinks;
@@ -20,9 +24,9 @@ const NavBar = () => {
       <nav>
         <ul>
           <li>
-            <NavLink to="/profile" exact={true} activeClassName={styles.active}>
+            <a onClick={() => setModalOpen(true)}>
               Profile
-            </NavLink>
+            </a>
           </li>
           <li>
             <NavLink to="/" onClick={onLogout} exact={true} activeClassName="active">
@@ -102,6 +106,7 @@ const NavBar = () => {
           </li>
         </div>
       ) : null}
+      {modalOpen && <EditProfileModal />}
     </>
   );
 }

@@ -4,13 +4,16 @@ import { Provider } from 'react-redux'
 import './index.css';
 import App from './App';
 import configureStore from './store';
+import { EditProfileProvider } from './components/context/EditProfileContext';
 
 const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <EditProfileProvider>
+        <App />
+      </EditProfileProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

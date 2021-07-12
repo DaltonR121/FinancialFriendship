@@ -67,13 +67,13 @@ const Portfolio = () => {
       </div>
       <div className={styles.charts_wrapper}>
         <div className={styles.pieChartWrapper}>
-            <AssetsChart accounts={accounts} assets={assets} />
+            <AssetsChart className={styles.chart} accounts={accounts} assets={assets} />
         </div>
         <div className={styles.pieChartWrapper}>
-            <ExpensesChart monthlyReoccurrings={monthlyReoccurrings} />
+            <ExpensesChart className={styles.chart} monthlyReoccurrings={monthlyReoccurrings} />
         </div>
         <div className={styles.pieChartWrapper}>
-            <DebtChart assets={assets} creditCards={creditCards} otherObligations={otherObligations} />
+            <DebtChart className={styles.chart} assets={assets} creditCards={creditCards} otherObligations={otherObligations} />
         </div>
       </div>
     </div>

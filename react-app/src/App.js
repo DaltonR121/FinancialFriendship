@@ -34,6 +34,7 @@ function App() {
   }
 
   return (
+    <>
     <BrowserRouter>
       <NavBar />
       <Switch>
@@ -72,6 +73,7 @@ function App() {
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
+    </>
   );
 }
 

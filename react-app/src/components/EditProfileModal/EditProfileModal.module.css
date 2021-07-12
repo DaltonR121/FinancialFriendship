@@ -1,0 +1,36 @@
+.test {
+  color: pink;
+}
+
+.modal_wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+  width: 50px;
+  z-index: 100000;
+}
+
+.ReactModal__Content--after-open {
+  height: 50px;
+  width: 50px;
+  opacity: 1;
+}
+
+.ReactModal__Content {
+  height: 50px;
+  width: 50px;
+  opacity: 1;
+}
+
+.ReactModal__Body--open {
+  height: 50px;
+  width: 50px;
+  opacity: 1;
+}
+
+.Modal {
+  height: 50px;
+  width: 50px;
+  opacity: 1;
+  z-index: 1;
+}

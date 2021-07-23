@@ -17,11 +17,11 @@ const rootReducer = combineReducers({
     otherObligations
 });
 
-const rootReducer = (state, action) => {
+const clearReducer = (state, action) => {
     if (action.type === REMOVE_USER) {
-      return appReducer(undefined, action);
+      return rootReducer(undefined, action);
     }
-    return appReducer(state, action);
+    return rootReducer(state, action);
 };
 
 

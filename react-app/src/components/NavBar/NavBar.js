@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from "../../store/session";
 import github from '../../assets/GitHub-Mark-32px.png'
@@ -69,7 +69,7 @@ const NavBar = () => {
             </div>
           </div>
           <div className={styles.nav__center}>
-          <h1>Financial Friendship</h1>
+            <h1>Financial Friendship</h1>
           </div>
           <div className={styles.nav__right}>
             {setLinks}

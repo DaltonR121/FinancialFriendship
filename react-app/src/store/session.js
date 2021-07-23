@@ -1,7 +1,7 @@
 // constants
 const SET_USER = "session/SET_USER"
 const EDIT_USER = "session/EDIT_USER"
-const REMOVE_USER = "session/REMOVE_USER"
+export const REMOVE_USER = "session/REMOVE_USER"
 
 // action creators
 const setUser = (user) => ({
@@ -14,7 +14,7 @@ const editUser = (user) => ({
     payload: user
 })
 
-const removeUser = () => ({
+export const removeUser = () => ({
     type: REMOVE_USER,
 })
 

@@ -4,6 +4,7 @@ import session from "./session"
 import accounts from "./accounts"
 import assets from "./assets"
 import creditCards from "./creditCards"
+import { REMOVE_USER } from "./session";
 import monthlyReoccurrings from "./monthlyReoccurrings"
 import otherObligations from "./otherObligations";
 
@@ -15,6 +16,13 @@ const rootReducer = combineReducers({
     monthlyReoccurrings,
     otherObligations
 });
+
+const rootReducer = (state, action) => {
+    if (action.type === REMOVE_USER) {
+      return appReducer(undefined, action);
+    }
+    return appReducer(state, action);
+};
 
 
 let enhancer;

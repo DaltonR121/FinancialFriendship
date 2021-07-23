@@ -19,7 +19,6 @@ const customStyles = {
 
 function SignupModal({signupModal, setSignupModal}) {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.session.user)
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

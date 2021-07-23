@@ -1,5 +1,6 @@
 import { defaults } from 'chart.js';
 import React, { useEffect, useState } from 'react';
+import NumberFormat from 'react-number-format';
 import { Doughnut } from 'react-chartjs-2'
 import styles from './Portfolio.module.css';
 
@@ -32,22 +33,17 @@ const AssetsChart = ({ accounts, assets }) => {
         label: 'Expense Breakdown',
         data: assetAmounts,
         backgroundColor: [
-          'rgba(51, 66, 87, 0.5)',
-          'rgba(141, 40, 40, 0.5)',
-          'rgba(79, 14, 14, 0.5)',
-          'rgba(82, 0, 106, 0.5)',
-          'rgba(153, 105, 13, 0.5)',
-          'rgba(255, 118, 0, 0.5)',
           'rgba(75, 45, 195, 0.5)',
+          'rgba(19, 167, 107, 0.5)',
+          'rgba(255, 228, 1, 0.5)',
+          'rgba(102, 252, 241, 0.5)',
+          'rgba(175, 210, 116, 0.5)',
+          'rgba(238, 76, 125, 0.5)',
+          'rgba(24, 38, 39, 0.5)',
+          'rgba(255, 118, 0, 0.5)',
         ],
         borderColor: [
-          'rgba(51, 66, 87, 1)',
-          'rgba(141, 40, 40, 1)',
-          'rgba(79, 14, 14, 1)',
-          'rgba(82, 0, 106, 1)',
-          'rgba(153, 105, 13, 1)',
-          'rgba(255, 118, 0, 1)',
-          'rgba(75, 45, 195, 1)',
+          'rgb(129, 138, 139)',
         ],
         borderWidth: 1,
       },
@@ -71,7 +67,7 @@ const AssetsChart = ({ accounts, assets }) => {
     <>
       <div className={styles.chart_header}>
         <h2>Assets</h2>
-        <h2>Total Asset Value: ${ assetsTotal }</h2>
+        <h2>Assets Value: {<NumberFormat value={assetsTotal} displayType={'text'} thousandSeparator={true} prefix={'$'} />}</h2>
       </div>
       <Doughnut className={styles.pieChart} data={data} options={options} />
     </>

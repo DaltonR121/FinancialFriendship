@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import NumberFormat from 'react-number-format';
 import { getUserAccount, deleteUserAccount } from '../../store/accounts'
 import EditAccountModal from './EditAccountModal'
 import AddAccountModal from './AddAccountModal';
@@ -20,7 +21,7 @@ const Accounts = () => {
     accounts.map(account => {
       total += account.balance 
     })
-    return total;
+    return <NumberFormat value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} />;
   }
 
   useEffect(() => {
@@ -30,7 +31,7 @@ const Accounts = () => {
   return (
     <div className={styles.accounts__wrapper}>
       <h1>Accounts</h1>
-      <h2>Accounts Total: ${accountsTotal()}</h2>
+      <h2>Accounts Total: {accountsTotal()}</h2>
       <div onClick={(e) => setAccountAddModal(true)} className={styles.add_account}>
         <h2>+</h2>
       </div>
@@ -48,7 +49,7 @@ const Accounts = () => {
               <tr onClick={(e) => setAccount(account)} onDoubleClick={(e) => setAccountEditModal(account)} key={account.id}>
                 <td>{account.account_name}</td>
                 <td>{account.account_type}</td>
-                <td>${account.balance}</td>
+                <td><NumberFormat value={account.balance} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
               </tr>
             ))}
           </tbody>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import NumberFormat from 'react-number-format';
 import { getCreditCards } from '../../store/creditCards'
 import AddCreditCardModal from './AddCreditCardModal';
 import EditCreditCardModal from './EditCreditCardModal'
@@ -41,7 +42,7 @@ const CreditCards = () => {
   return (
     <div className={styles.creditCards__wrapper}>
       <h1>Credit Cards</h1>
-      <h2>Credit Card Debt: ${creditCardsTotal()}</h2>
+      <h2>Credit Card Debt: {<NumberFormat value={creditCardsTotal()} displayType={'text'} thousandSeparator={true} prefix={'$'} />}</h2>
       <h2>Credit Utilization: {utilization()}%</h2>
       <div
         onClick={(e) => setCreditCardAddModal(true)}
@@ -68,9 +69,9 @@ const CreditCards = () => {
                 key={creditCard.id}
               >
                 <td>{creditCard.account_name}</td>
-                <td>${creditCard.current_balance}</td>
+                <td>{<NumberFormat value={creditCard.current_balance} displayType={'text'} thousandSeparator={true} prefix={'$'} />}</td>
                 <td>{creditCard.interest_rate}%</td>
-                <td>{creditCard.limit}</td>
+                <td>{<NumberFormat value={creditCard.limit} displayType={'text'} thousandSeparator={true} prefix={'$'} />}</td>
                 <td>{creditCard.due_date}</td>
               </tr>
             ))}

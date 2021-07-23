@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import NumberFormat from 'react-number-format';
 import { getUserAccount } from '../../store/accounts';
 import { getUserAsset } from '../../store/assets';
 import { getCreditCards } from '../../store/creditCards';
@@ -46,7 +47,8 @@ const Portfolio = () => {
   }
 
   const netWorth = () => {
-    return totalAssets() - totalLiabilites();
+    let networth = totalAssets() - totalLiabilites();
+    return <NumberFormat value={networth} displayType={'text'} thousandSeparator={true} prefix={'$'} />;
   }
   
   useEffect(() => {
@@ -61,7 +63,7 @@ const Portfolio = () => {
     <div className={styles.portfolio_wrapper}>
       <div className={styles.portfolio_header}>
         <h1>Portfolio</h1>
-        <h2>Net Worth: ${netWorth()}</h2>
+        <h2>Net Worth: {netWorth()}</h2>
       </div>
       {modalOpen ? null : (
       <div className={styles.charts_wrapper}>

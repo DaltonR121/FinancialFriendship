@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import NumberFormat from 'react-number-format';
 import { getUserOtherObligation, deleteUserOtherObligation } from '../../store/otherObligations'
 import AddOtherObligationsModal from './AddOtherObligationsModal';
 import EditOtherObligationModalAddOtherObligationsModal from './EditOtherObligationsModal'
@@ -30,7 +31,7 @@ const OtherObligations = () => {
   return (
     <div className={styles.otherObligations__wrapper}>
       <h1>Other Obligations</h1>
-      <h2>Total: ${otherObligationsTotal()}</h2>
+      <h2>Total: {<NumberFormat value={otherObligationsTotal()} displayType={'text'} thousandSeparator={true} prefix={'$'} />}</h2>
       <div onClick={(e) => setOtherObligationAddModal(true)} className={styles.add_otherObligation}>
         <h2>+</h2>
       </div>
@@ -40,15 +41,13 @@ const OtherObligations = () => {
             <tr>
               <th>Description</th>
               <th>Current Balance</th>
-              <th>Due Date</th>
             </tr>
           </thead>
           <tbody>
             {otherObligations.map((otherObligation) => (
               <tr onClick={(e) => setOtherObligation(otherObligation)} onDoubleClick={(e) => setOtherObligationEditModal(otherObligation)} key={otherObligation.id}>
                 <td>{otherObligation.account_description}</td>
-                <td>${otherObligation.current_balance}</td>
-                <td>{otherObligation.due_date}</td>
+                <td>{<NumberFormat value={otherObligation.current_balance} displayType={'text'} thousandSeparator={true} prefix={'$'} />}</td>
               </tr>
             ))}
           </tbody>

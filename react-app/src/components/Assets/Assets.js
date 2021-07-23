@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import NumberFormat from 'react-number-format';
 import { getUserAsset, deleteUserAsset } from '../../store/assets'
 import AddAssetModal from './AddAssetModal';
 import EditAssetModal from './EditAssetModal'
@@ -38,8 +39,8 @@ const Assets = () => {
   return (
     <div className={styles.assets__wrapper}>
       <h1>Assets</h1>
-      <h2>Assets Value: ${assetsTotal()}</h2>
-      <h2>Amount Owed: ${assetsOwed()}</h2>
+      <h2>Assets Value: {<NumberFormat value={assetsTotal()} displayType={'text'} thousandSeparator={true} prefix={'$'} />}</h2>
+      <h2>Amount Owed: {<NumberFormat value={assetsOwed()} displayType={'text'} thousandSeparator={true} prefix={'$'} />}</h2>
       <div onClick={(e) => setAssetAddModal(true)} className={styles.add_asset}>
         <h2>+</h2>
       </div>
@@ -58,8 +59,8 @@ const Assets = () => {
             {assets.map((asset) => (
               <tr onClick={(e) => setAsset(asset)} onDoubleClick={(e) => setAssetEditModal(asset)} key={asset.id}>
                 <td>{asset.asset_description}</td>
-                <td>${asset.current_value}</td>
-                <td>${asset.amount_owed}</td>
+                <td><NumberFormat value={asset.current_value} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
+                <td><NumberFormat value={asset.amount_owed} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
                 <td>{asset.interest_rate}%</td>
                 <td>{asset.due_date}</td>
               </tr>

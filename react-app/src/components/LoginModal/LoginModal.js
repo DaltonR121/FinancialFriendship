@@ -30,8 +30,9 @@ function LoginModal({loginModal, setLoginModal}) {
     const data = await dispatch(login(email, password));
     if (data.errors) {
       setErrors(data.errors);
+    } else {
+      setLoginModal(false)
     }
-    setLoginModal(false)
   };
 
   const demoLogin = () => {
@@ -67,12 +68,12 @@ function LoginModal({loginModal, setLoginModal}) {
         >
         <div className={styles.modal_wrapper}>
           <h1>Login</h1>
-          <form onSubmit={onLogin}>
-            <div>
+            <div className={styles.errors__container}>
               {errors.map((error) => (
-                <div>{error}</div>
+                <div className={styles.errors}>{error}</div>
               ))}
             </div>
+          <form onSubmit={onLogin}>
             <div className={styles.input_field}>
               <label htmlFor="email">Email</label>
               <input

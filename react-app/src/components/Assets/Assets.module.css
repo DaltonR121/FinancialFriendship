@@ -89,6 +89,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 25px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .modal_buttons {
@@ -104,6 +105,12 @@
   width: 50%;
   margin: 3px 0;
   padding: 3px;
+}
+
+.modal_wrapper input,
+.modal_wrapper select {
+  padding: 3px;
+  margin: 2px 0;
 }
 
 #delete_button {

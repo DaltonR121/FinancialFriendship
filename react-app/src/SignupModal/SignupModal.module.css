@@ -1,6 +1,7 @@
 .modal_wrapper {
   display: flex;
   flex-direction: column;
+  font-family: 'Roboto', sans-serif;
 }
 
 .modal_wrapper h1 {
@@ -9,6 +10,11 @@
 
 .modal_wrapper label {
   font-weight: bold;
+}
+
+.modal_wrapper input {
+  padding: 3px;
+  margin: 2px 0;
 }
 
 .modal_wrapper button {

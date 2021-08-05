@@ -61,6 +61,7 @@
   justify-content: space-around;
   background-color: rgb(48, 56, 65);
   color: rgb(238, 238, 238);
+  font-family: 'Roboto', sans-serif;
 }
 
 .tab_nav__tab_wrapper li {

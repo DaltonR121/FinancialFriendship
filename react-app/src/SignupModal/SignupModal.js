@@ -21,6 +21,7 @@ function SignupModal({signupModal, setSignupModal}) {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
   
+  const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,6 +31,8 @@ function SignupModal({signupModal, setSignupModal}) {
     e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
+    } else {
+      setErrors.push('Passwords much match!')
     }
   };
 

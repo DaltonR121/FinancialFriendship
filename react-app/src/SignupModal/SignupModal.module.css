@@ -31,3 +31,7 @@
   flex-direction: column;
   margin: 15px;
 }
+
+.passwordMatch {
+  margin-bottom: 10px;
+}

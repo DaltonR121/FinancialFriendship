@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from "../../store/session";
@@ -15,6 +15,9 @@ const NavBar = () => {
   const { modalOpen, setModalOpen } = useEditProfile()
   const [loginModal, setLoginModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
   
   const sessionUser = useSelector((state) => state.session.user);
   let setLinks;
@@ -22,6 +25,14 @@ const NavBar = () => {
   const onLogout = async (e) => {
     await dispatch(logout());
   };
+
+  useEffect(() => {
+    if (password !== repeatPassword) {
+      setPasswordsMatch(false);
+    } else {
+      setPasswordsMatch(true)
+    }
+  }, [password, repeatPassword]);
 
   if (sessionUser) {
     setLinks = (
@@ -114,7 +125,7 @@ const NavBar = () => {
       ) : null}
       {modalOpen && <EditProfileModal />}
       {loginModal && <LoginModal loginModal={loginModal} setLoginModal={setLoginModal} />}
-      {signupModal && <SignupModal signupModal={signupModal} setSignupModal={setSignupModal} /> }
+      {signupModal && <SignupModal signupModal={signupModal} setSignupModal={setSignupModal} passwordsMatch={passwordsMatch} setPasswordsMatch={setPasswordsMatch} password={password} setPassword={setPassword} repeatPassword={repeatPassword} setRepeatPassword={setRepeatPassword}  /> }
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from "react-router-dom";
@@ -17,19 +17,22 @@ const customStyles = {
   }
 };
 
-function SignupModal({signupModal, setSignupModal}) {
+function SignupModal({ signupModal, setSignupModal, passwordsMatch, setPasswordsMatch, password, setPassword, setRepeatPassword, repeatPassword }) {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
   
+  const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+    const data = await dispatch(signUp(username, email, password));
+    console.log(data);
+    if (data.errors) {
+      setErrors(data.errors);
+    } else {
+      setSignupModal(false)
     }
   };
 
@@ -52,7 +55,7 @@ function SignupModal({signupModal, setSignupModal}) {
   if (user) {
     return <Redirect to="/portfolio" />;
   }
-
+ 
   function closeModal() {
     setSignupModal(false);
   }
@@ -68,6 +71,11 @@ function SignupModal({signupModal, setSignupModal}) {
         >
         <div className={styles.modal_wrapper}>
           <h1>Signup</h1>
+            <div className={styles.errors__container}>
+              {errors.map((error) => (
+                <div className={styles.errors}>{error}</div>
+              ))}
+            </div>
           <form onSubmit={onSignUp}>
             <div className={styles.input_field}>
               <label>User Name</label>
@@ -97,6 +105,7 @@ function SignupModal({signupModal, setSignupModal}) {
               ></input>
             </div>
             <div className={styles.input_field}>
+              {passwordsMatch ? null : (<div className={styles.passwordMatch}>Passwords much match!</div>)}
               <label>Repeat Password</label>
               <input
                 type="password"
@@ -106,7 +115,7 @@ function SignupModal({signupModal, setSignupModal}) {
                 required={true}
               ></input>
             </div>
-            <button type="submit">Sign Up</button>
+            <button disabled={!passwordsMatch || password.length < 1} type="submit">Sign Up</button>
           </form>
         </div>
       </Modal>

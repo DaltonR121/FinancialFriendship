@@ -1,6 +1,7 @@
 .splash__wrapper {
   display: flex;
   flex-direction: column;
+  font-family: 'Roboto', sans-serif;
 }
 
 .splash__main_content {
@@ -8,6 +9,11 @@
   grid-template-columns: repeat(2, 1fr);
   height: 750px;
   width: 100vw;
+}
+
+.syling__box {
+  overflow-x: visible;
+  overflow-y: visible;
 }
 
 .main_content__left {
@@ -20,7 +26,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50px 40px;
+  margin: 50px 150px;
+}
+
+.main_content__right img {
+  height: 350px;
+  width: auto;
 }
 
 .main_content__right h1,

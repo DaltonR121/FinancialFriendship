@@ -19,14 +19,6 @@ const Splash = () => {
           <img src={money} />
         </div>
       </div>
-      {/* <div className={styles.splash__secondary_content}>
-          <div className={styles.secondary_content__left}>
-          
-          </div>
-          <div className={styles.secondary_content__right}>
-            <h1>Our Platform</h1>
-          </div>
-      </div> */}
     </div>
   );
 }

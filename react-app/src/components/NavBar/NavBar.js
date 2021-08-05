@@ -69,7 +69,9 @@ const NavBar = () => {
             </div>
           </div>
           <div className={styles.nav__center}>
-            <h1>Financial Friendship</h1>
+            <Link to='/'>
+              <h1>Financial Friendship</h1>
+            </Link>
           </div>
           <div className={styles.nav__right}>
             {setLinks}

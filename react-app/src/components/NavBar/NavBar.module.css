@@ -27,8 +27,14 @@
   grid-area: center;
   display: flex;
   justify-content: center;
+  align-items: center;
   font-family: 'Amatic SC', cursive;
   font-size: 37px;
+  height: 75px;
+}
+
+.nav__center a {
+  font-size: 35px;
 }
 
 .nav__right {
@@ -63,4 +69,5 @@
 
 .tab_nav__tab_wrapper a.active {
   background-color: rgb(255, 87, 34);
+  color: black;
 }

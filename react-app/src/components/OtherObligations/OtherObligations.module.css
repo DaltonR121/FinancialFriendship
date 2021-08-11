@@ -110,6 +110,8 @@
 .modal_wrapper select {
   padding: 3px;
   margin: 2px 0;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 #delete_button {

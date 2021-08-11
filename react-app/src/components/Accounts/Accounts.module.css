@@ -83,6 +83,8 @@
 .modal_input select {
   padding: 5px;
   margin: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 .modal_wrapper h1 {

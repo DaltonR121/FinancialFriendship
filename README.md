@@ -1,6 +1,6 @@
 # Financial Friendship
 
-[Ryan Dalton](https://github.com/DaltonR121)
+Made by: [Ryan Dalton](https://github.com/DaltonR121)
 
 Manage your finances at [Financial Friendship](https://spacexchange.herokuapp.com/)
 
@@ -27,5 +27,10 @@ According to Charles Schwab's [2019 Modern Wealth Index Survey](https://www.abou
 
 The idea for Financial Friendship came from a spreadsheet I actually keep for my own family's finances.  It occurred to me that the more often I updated that spreadsheet, the more in-tune I felt with our finances.  This application is essentially modeled after that spreadsheet!  When a user first accesses the application, they are greeted by the splash page with links to Login or Signup.
 
-
 ![](assets/splash.png)
+
+After logging into the site, the user lands on their portfolio!  The portfolio page includes data visualization for "Assets", "Accounts", and "Debt".  This data is a summation of data input by the user across the rest of the application.  The user can hover over specific areas of the charts and see totals broken down by category.  The user also has the ability to remove categories from the visualization by clicking that specific category below the chart!
+
+![](assets/portfolio.png)
+
+

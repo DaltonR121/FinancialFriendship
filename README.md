@@ -10,7 +10,7 @@ According to Charles Schwab's [2019 Modern Wealth Index Survey](https://www.abou
 
 - [API Documentation](https://github.com/DaltonR121/FinancialFriendship/wiki/API-Routes)
 - [Database Schema](https://github.com/DaltonR121/FinancialFriendship/wiki/Database-Schema)
-- [Frontend Routes](hhttps://github.com/DaltonR121/FinancialFriendship/wiki/Frontend-Routes)
+- [Frontend Routes](https://github.com/DaltonR121/FinancialFriendship/wiki/Frontend-Routes)
 - [MVP Feature List](https://github.com/DaltonR121/FinancialFriendship/wiki/MVP-Feature-List)
 - [User Stories](https://github.com/DaltonR121/FinancialFriendship/wiki/User-Stories)
 
@@ -24,3 +24,8 @@ According to Charles Schwab's [2019 Modern Wealth Index Survey](https://www.abou
 - Flask/SQLAlchemy
 
 ## Overview
+
+The idea for Financial Friendship came from a spreadsheet I actually keep for my own family's finances.  It occurred to me that the more often I updated that spreadsheet, the more in-tune I felt with our finances.  This application is essentially modeled after that spreadsheet!  When a user first accesses the application, they are greeted by the splash page with links to Login or Signup.
+
+
+![](assets/splash.png)

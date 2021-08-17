@@ -44,3 +44,8 @@ The user has five specific areas to input data - "Accounts", "Assets", "Credit C
 ![](assets/monthly.png)
 
 ![](assets/other.png)
+
+## What now? More bonuses!
+
+- A chart that keeps track of "Historical Value" of a user's net worth over time
+- A tool that will allow users to see how long it will take to get out of debt based upon current income/monthly expenses/level of debt

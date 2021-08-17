@@ -33,4 +33,14 @@ After logging into the site, the user lands on their portfolio!  The portfolio p
 
 ![](assets/portfolio.png)
 
+The user has five specific areas to input data - "Accounts", "Assets", "Credit Cards", "Monthly Reoccurring", and "Other Obligations".  Across these pages, users can name accounts, input values, balances, an interest rate, limit, etc. depending upon what is appropriate for the category!
 
+![](assets/accounts.png)
+
+![](assets/assets.png)
+
+![](assets/creditcards.png)
+
+![](assets/monthly.png)
+
+![](assets/other.png)
